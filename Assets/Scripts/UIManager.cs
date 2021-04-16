@@ -8,16 +8,22 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject info;
     [SerializeField]
-    private Toggle[] inventoryToggle;
+    private ScrollRect scrollRect;
+    [SerializeField]
+    private RectTransform[] inventorys;
     [SerializeField]
     private Toggle[] menuToggle;
 
     private void Awake()
     {
         inventoryPanel.SetActive(true);
-        for (int i = 0; i < inventoryToggle.Length; i++)
-            inventoryToggle[i].isOn = true;
-        inventoryToggle[0].isOn = true;
+        for (int i = 0; i < inventorys.Length; i++)
+        {
+            scrollRect.content = inventorys[i];
+            inventorys[i].gameObject.SetActive(false);
+        }
+        scrollRect.content = inventorys[0];
+        inventorys[0].gameObject.SetActive(true);
         inventoryPanel.SetActive(false);
     }
 
