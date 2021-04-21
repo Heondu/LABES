@@ -8,7 +8,7 @@ public class Shortcut : MonoBehaviour
     private Slot slot;
     private Image icon;
     private TextMeshProUGUI keycodeText;
-    public Skill skill;
+    private Skill skill;
     [SerializeField]
     private KeyAction keycode;
 
@@ -32,5 +32,10 @@ public class Shortcut : MonoBehaviour
         if (slot.skill != null) skill = slot.skill;
         else if (slot.item != null && slot.item.skill != null) skill = slot.item.skill;
         else skill = null;
+    }
+
+    public Skill GetSkill()
+    {
+        return skill;
     }
 }

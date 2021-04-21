@@ -7,15 +7,6 @@ public class SkillExplode : SkillScript
     private float radius;
     private int penetrationCount = 0;
 
-    protected override void Update()
-    {
-        if (skill != null)
-        {
-            if (timer.IsTimeOut(skill.lifetime)) Destroy(gameObject);
-            if (skill.penetration <= penetrationCount) Destroy(gameObject);
-        }
-    }
-
     public override void Execute(GameObject executor, string targetTag, Skill skill)
     {
         base.Execute(executor, targetTag, skill);
@@ -44,6 +35,12 @@ public class SkillExplode : SkillScript
                     StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
                     penetrationCount++;
                 }
+            }
+
+            if (skill != null)
+            {
+                if (timer.IsTimeOut(skill.lifetime)) Destroy(gameObject);
+                if (skill.penetration <= penetrationCount) Destroy(gameObject);
             }
 
             yield return new WaitForSeconds(skill.delay);

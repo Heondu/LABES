@@ -6,11 +6,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
-    private GameObject info;
-    [SerializeField]
-    private ScrollRect scrollRect;
-    [SerializeField]
-    private RectTransform[] inventorys;
+    private GameObject[] inventorys;
     [SerializeField]
     private Toggle[] menuToggle;
 
@@ -19,11 +15,16 @@ public class UIManager : MonoBehaviour
         inventoryPanel.SetActive(true);
         for (int i = 0; i < inventorys.Length; i++)
         {
-            scrollRect.content = inventorys[i];
+            inventorys[i].gameObject.SetActive(true);
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 1; i < inventorys.Length; i++)
+        {
             inventorys[i].gameObject.SetActive(false);
         }
-        scrollRect.content = inventorys[0];
-        inventorys[0].gameObject.SetActive(true);
         inventoryPanel.SetActive(false);
     }
 
@@ -34,5 +35,11 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.awaken])) menuToggle[2].isOn = !menuToggle[2].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.quest])) menuToggle[3].isOn = !menuToggle[3].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting])) menuToggle[4].isOn = !menuToggle[4].isOn;
+    }
+    
+    public void TimePuase(bool isPause)
+    {
+        if (isPause) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 }

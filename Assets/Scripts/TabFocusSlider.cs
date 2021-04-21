@@ -20,6 +20,7 @@ public class TabFocusSlider : MonoBehaviour
 
     private IEnumerator Move(Vector3 newPos)
     {
+        float startTime = Time.realtimeSinceStartup;
         float percent = 0;
         while (percent < 1)
         {
@@ -33,9 +34,11 @@ public class TabFocusSlider : MonoBehaviour
                 float yPos = Mathf.Lerp(transform.position.y, newPos.y, percent);
                 transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
             }
-            percent += Time.deltaTime / moveTime;
+            percent += (Time.realtimeSinceStartup - startTime) / moveTime;
             yield return null;
         }
+        if (x) transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
+        else if (y) transform.position = new Vector3(transform.position.x, newPos.y, transform.position.z);
     }
 
     private void OnDisable()

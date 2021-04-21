@@ -27,8 +27,8 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (IsAttack(playerInput.GetSkillIndex())) Execute(shortcuts[playerInput.GetSkillIndex()].skill);
-        if (hasItemSkill(playerInput.GetItemIndex())) Execute(shortcuts[playerInput.GetItemIndex()].skill);
+        if (IsAttack(playerInput.GetSkillIndex())) Execute(shortcuts[playerInput.GetSkillIndex()].GetSkill());
+        if (hasItemSkill(playerInput.GetItemIndex())) Execute(shortcuts[playerInput.GetItemIndex()].GetSkill());
 
         UpdateShortcutSkills();
     }
@@ -37,11 +37,11 @@ public class PlayerSkill : MonoBehaviour
     {
         for (int i = 0; i < shortcuts.Length; i++)
         {
-            if (shortcuts[i].skill == null) continue;
-            if (isSkillCool.ContainsKey(shortcuts[i].skill) == false)
+            if (shortcuts[i].GetSkill() == null) continue;
+            if (isSkillCool.ContainsKey(shortcuts[i].GetSkill()) == false)
             {
-                isSkillCool[shortcuts[i].skill] = false;
-                skillCool[shortcuts[i].skill] = new Timer();
+                isSkillCool[shortcuts[i].GetSkill()] = false;
+                skillCool[shortcuts[i].GetSkill()] = new Timer();
             }
         }
     }
@@ -49,16 +49,16 @@ public class PlayerSkill : MonoBehaviour
     private bool IsAttack(int index)
     {
         if (index == -1) return false;
-        if (shortcuts[index].skill == null) return false;
-        if (isSkillCool[shortcuts[index].skill]) return false;
+        if (shortcuts[index].GetSkill() == null) return false;
+        if (isSkillCool[shortcuts[index].GetSkill()]) return false;
         return true;
     }
 
     private bool hasItemSkill(int index)
     {
         if (index == -1) return false;
-        if (shortcuts[index].skill == null) return false;
-        if (isSkillCool[shortcuts[index].skill]) return false;
+        if (shortcuts[index].GetSkill() == null) return false;
+        if (isSkillCool[shortcuts[index].GetSkill()]) return false;
         return true;
     }
 
