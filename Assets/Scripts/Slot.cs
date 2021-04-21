@@ -117,13 +117,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         if (popup != null)
         {
-            popup.gameObject.SetActive(true);
-            if (useType == UseType.weapon || useType == UseType.equipment) popup.UpdateItemInfo(this);
-            if (useType == UseType.skill) popup.UpdateSkillInfo(this);
-            if (useType == UseType.consume) popup.UpdateConsumeInfo(this);
-
-            OnNotify(false);
+            popup.UpdateInfo(this);
         }
+        OnNotify(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

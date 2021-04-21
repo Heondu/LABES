@@ -27,7 +27,30 @@ public class Popup : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    public void UpdateItemInfo(Slot slot)
+    public void UpdateInfo(Slot slot)
+    {
+        if (slot.item == null && slot.skill == null) return;
+        
+        gameObject.SetActive(true);
+
+        if (slot.item != null)
+        {
+            if (slot.item.useType == "weapon" || slot.item.useType == "equipment")
+            {
+                UpdateItemInfo(slot);
+            }
+            else if (slot.item.useType == "consume")
+            {
+                UpdateConsumeInfo(slot);
+            }
+        }
+        else if (slot.skill != null)
+        {
+            UpdateSkillInfo(slot);
+        }
+    }
+
+    private void UpdateItemInfo(Slot slot)
     {
         this.slot = slot;
         icon.sprite = Resources.Load<Sprite>(slot.item.inventoryImage);
@@ -45,7 +68,7 @@ public class Popup : MonoBehaviour
         }
     }
 
-    public void UpdateSkillInfo(Slot slot)
+    private void UpdateSkillInfo(Slot slot)
     {
         this.slot = slot;
         icon.sprite = Resources.Load<Sprite>(slot.skill.image);
@@ -65,7 +88,7 @@ public class Popup : MonoBehaviour
         addStatValue[2].text = slot.skill.penetration.ToString();
     }
 
-    public void UpdateConsumeInfo(Slot slot)
+    private void UpdateConsumeInfo(Slot slot)
     {
         this.slot = slot;
         icon.sprite = Resources.Load<Sprite>(slot.item.inventoryImage);

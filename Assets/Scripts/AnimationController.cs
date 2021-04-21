@@ -13,13 +13,13 @@ public class AnimationController : MonoBehaviour
 
     public void Movement(Vector3 axis)
     {
-        if (axis != Vector3.zero)
+        if (axis != Vector3.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_rear"))
         {
             animator.SetBool("Move", true);
-            if (axis.y > 0) animator.SetBool("Front", false);
-            else if (axis.y < 0) animator.SetBool("Front", true);
             if (axis.x > 0) transform.localScale = flipRight;
             else if (axis.x < 0) transform.localScale = flipLeft;
+            if (axis.y > 0) animator.SetBool("Front", false);
+            else if (axis.y < 0) animator.SetBool("Front", true);
         }
         else
         {
@@ -29,6 +29,14 @@ public class AnimationController : MonoBehaviour
 
     public void Attack()
     {
+        if (CompareTag("Player"))
+        {
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (dir.x > transform.position.x) transform.localScale = flipRight;
+            else if (dir.x < transform.position.x) transform.localScale = flipLeft;
+            if (dir.y > transform.position.y) animator.SetBool("Front", false);
+            else if (dir.y < transform.position.y) animator.SetBool("Front", true);
+        }
         animator.SetTrigger("Attack");
     }
 }

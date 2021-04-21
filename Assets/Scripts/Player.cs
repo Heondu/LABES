@@ -6,8 +6,6 @@ public class Player : MonoBehaviour, ILivingEntity
     private PlayerInput playerInput;
     private AnimationController animationController;
     public PlayerStatus status;
-    [SerializeField]
-    private Transform[] weapon;
 
     private void Awake()
     {

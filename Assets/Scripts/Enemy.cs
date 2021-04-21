@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         this.name = name;
         monster = DataManager.monster.FindDic("name", name);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
-        status.maxHP = 10;
+        status.maxHP = 30;
         status.HP = status.maxHP;
         status.strength.BaseValue = (int)monlvl["strength"];
         status.agility.BaseValue = (int)monlvl["agility"];
