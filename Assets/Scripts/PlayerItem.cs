@@ -21,7 +21,7 @@ public class PlayerItem : MonoBehaviour
         ItemScript item = collision.GetComponent<ItemScript>();
         if (item != null)
         {
-            PickUp(item.item);
+            PickUp(item.GetItem());
             Destroy(collision.gameObject);
         }
     }

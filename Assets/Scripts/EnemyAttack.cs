@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     private bool isCool = false;
+    public bool IsCool => isCool;
     public List<Skill> skillList = new List<Skill>();
     public List<int> probList = new List<int>();
     public Dictionary<Skill, bool> isSkillCool = new Dictionary<Skill, bool>();

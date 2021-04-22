@@ -38,17 +38,17 @@ public class SkillBuff : SkillScript
         }
         else if (skill.isPositive == 0)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, skill.size);
-            foreach (Collider2D collider in colliders)
+            foreach (GameObject target in FindAllTarget(skill.size))
             {
-                if (collider.gameObject.CompareTag(targetTag) == false) continue;
-
-                ILivingEntity entity = collider.GetComponent<ILivingEntity>();
-                if (entity == null) continue;
-                entityList.Add(entity);
-                StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
+                ILivingEntity entity = target.GetComponent<ILivingEntity>();
+                if (entity != null)
+                {
+                    entityList.Add(entity);
+                    StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
+                }
             }
         }
+
         transform.parent = buffHolder;
         clone = Instantiate(buffPrefab, buffUIHolder);
         clone.GetComponent<UIBuffLifetimeViewer>().Init(this, skill);

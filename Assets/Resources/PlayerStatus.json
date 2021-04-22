@@ -3,13 +3,13 @@
         "BaseValue": 1.0
     },
     "agility": {
-        "BaseValue": 0.0
+        "BaseValue": 10.0
     },
     "intelligence": {
-        "BaseValue": 5.0
+        "BaseValue": 10.0
     },
     "endurance": {
-        "BaseValue": 0.0
+        "BaseValue": 10.0
     },
     "damage": {
         "BaseValue": 0.0

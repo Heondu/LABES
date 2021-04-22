@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-
-public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK }
 
 public class Enemy : MonoBehaviour, ILivingEntity
 {
@@ -9,12 +8,13 @@ public class Enemy : MonoBehaviour, ILivingEntity
     private EnemyController enemyController;
     private EnemyAttack enemyAttack;
     private AnimationController animationController;
-    private EnemyState state = EnemyState.STATE_PATROL;
     private new string name;
     public EnemyStatus status;
     public Dictionary<string, object> monster = new Dictionary<string, object>();
     public Dictionary<string, object> monlvl = new Dictionary<string, object>();
     private float delay;
+    private Flash flash;
+    private float hitTime = 0.5f;
 
     private void Awake()
     {
@@ -22,13 +22,12 @@ public class Enemy : MonoBehaviour, ILivingEntity
         enemyController = GetComponent<EnemyController>();
         enemyAttack = GetComponent<EnemyAttack>();
         animationController = GetComponent<AnimationController>();
+        flash = GetComponent<Flash>();
     }
 
     private void Update()
     {
-        ChangeState(enemyController.Operate());
-
-        switch (state)
+        switch (enemyController.GetState())
         {
             case EnemyState.STATE_PATROL:
                 movement.Execute(enemyController.GetAxis());
@@ -39,15 +38,24 @@ public class Enemy : MonoBehaviour, ILivingEntity
                 animationController.Movement(enemyController.GetAxis());
                 break;
             case EnemyState.STATE_ATTACK:
-                enemyAttack.Execute(delay);
-                animationController.Attack();
+                Attack();
                 break;
         }
     }
 
-    private void ChangeState(EnemyState state)
+    private void Attack()
     {
-        this.state = state; 
+        if (enemyAttack.IsCool == false)
+        {
+            enemyAttack.Execute(delay);
+            animationController.Attack(enemyController.GetAttackDir());
+            StartCoroutine(enemyController.Stop(1f));
+        }
+        else
+        {
+            movement.Execute(enemyController.GetAxis());
+            animationController.Movement(enemyController.GetAxis());
+        }
     }
 
     public void Init(string name)
@@ -55,7 +63,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         this.name = name;
         monster = DataManager.monster.FindDic("name", name);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
-        status.maxHP = 30;
+        status.maxHP = 50;
         status.HP = status.maxHP;
         status.strength.BaseValue = (int)monlvl["strength"];
         status.agility.BaseValue = (int)monlvl["agility"];
@@ -72,11 +80,19 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
         int value = Mathf.RoundToInt(_value);
 
-        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage("Miss", transform.position, damageType);
-        else FloatingDamageManager.instance.FloatingDamage(value.ToString(), transform.position, damageType);
+        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
+        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
 
-        if (damageType == DamageType.normal) status.HP = Mathf.Max(0, status.HP - value);
-        else if (damageType == DamageType.critical) status.HP = Mathf.Max(0, status.HP - value);
+        if (damageType == DamageType.normal || damageType == DamageType.critical)
+        {
+            status.HP = Mathf.Max(0, status.HP - value);
+            StartCoroutine(flash.Execute());
+            StartCoroutine(enemyController.Stop(hitTime));
+            if (damageType == DamageType.critical)
+            {
+                StartCoroutine(LazyCamera.instance.Shake(0.1f, 0.5f));
+            }
+        }
         else if (damageType == DamageType.heal) status.HP = Mathf.Min(status.HP + value, status.maxHP);
 
         if (status.HP == 0)

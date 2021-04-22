@@ -22,7 +22,7 @@ public class ItemGenerator : MonoBehaviour
 
     public void DropItem(int rarityMin, int rarityMax, string type, Vector3 pos)
     {
-        GameObject clone = null;
+        GameObject clone;
         int num = Random.Range(0, System.Enum.GetNames(typeof(ItemType)).Length);
         if (num == (int)ItemType.equipment)
         {
@@ -31,7 +31,7 @@ public class ItemGenerator : MonoBehaviour
             ItemInit();
             Additional();
             clone = Instantiate(itemPrefab, pos, Quaternion.identity);
-            clone.GetComponent<ItemScript>().item = item;
+            clone.GetComponent<ItemScript>().Init(item);
         }
         else if (num == (int)ItemType.consume)
         {
@@ -40,19 +40,8 @@ public class ItemGenerator : MonoBehaviour
             item = itemList[Random.Range(0, itemList.Count)];
             clone = Resources.Load<GameObject>("Prefabs/Items/" + item.name);
             clone = Instantiate(clone, pos, Quaternion.identity);
-            ItemScript itemScript = clone.GetComponent<ItemScript>();
-            itemScript.item = item;
-            if (itemScript.skill != "")
-                item.skill = DataManager.skillDB[itemScript.skill];
+            clone.GetComponent<ItemScript>().Init(item);
         }
-        Sprite sprite;
-        if (item.itemImage.Contains("_"))
-        {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Items");
-            sprite = sprites[int.Parse(item.itemImage.Substring(item.itemImage.IndexOf("_") + 1))];
-        }
-        else sprite = Resources.Load<Sprite>(item.itemImage);
-        clone.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     private void Filtering(int rarityMin, int rarityMax, Dictionary<string, Item> itemDB)

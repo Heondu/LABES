@@ -14,6 +14,7 @@ public class EnemySwarmController : MonoBehaviour
     private void Update()
     {
         if (isSwarmAttack) return;
+        if (enemys == null) return;
         for (int i = 0; i < enemys.Length; i++)
         {
             if (enemys[i].isSwarmAttack)

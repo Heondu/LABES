@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-public class EnemyStatus : BaseStatus
+public class EnemyStatus
 {
     public int HP;
     public int maxHP;

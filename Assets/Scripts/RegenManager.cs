@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RegenManager : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class RegenManager : MonoBehaviour
         foreach (GameObject regen in regens)
         {
             RegenArea regenArea = regen.GetComponent<RegenArea>();
-            regen.AddComponent<RegenMonster>().SpawnMonster(regenArea.position, regenArea.maxRegenNum, regenArea.pawnSize, regenArea.eliteSize, regenArea.eliteSpawnPer);
+            regen.GetComponent<RegenMonster>().SpawnMonster(regenArea.position, regenArea.maxRegenNum, regenArea.eliteSpawnPer);
         }
     }
 }

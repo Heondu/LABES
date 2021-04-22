@@ -27,16 +27,12 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void Attack(Vector2 dir)
     {
-        if (CompareTag("Player"))
-        {
-            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (dir.x > transform.position.x) transform.localScale = flipRight;
-            else if (dir.x < transform.position.x) transform.localScale = flipLeft;
-            if (dir.y > transform.position.y) animator.SetBool("Front", false);
-            else if (dir.y < transform.position.y) animator.SetBool("Front", true);
-        }
+        if (dir.x > 0) transform.localScale = flipRight;
+        else if (dir.x < 0) transform.localScale = flipLeft;
+        if (dir.y > 0) animator.SetBool("Front", false);
+        else if (dir.y < 0) animator.SetBool("Front", true);
         animator.SetTrigger("Attack");
     }
 }

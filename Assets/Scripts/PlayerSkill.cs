@@ -68,7 +68,7 @@ public class PlayerSkill : MonoBehaviour
         isSkillCool[skill] = true;
         skillCool[skill] = new Timer();
         StartCoroutine("Cooltime", skill);
-        animationController.Attack();
+        animationController.Attack((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized);
     }
 
     private IEnumerator Cooltime(Skill skill)

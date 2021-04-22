@@ -127,6 +127,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (isLock) return;
         if (item != null) InventoryManager.instance.OnBeginDrag(this);
         else if (skill != null) InventoryManager.instance.OnBeginDrag(this);
+        OnNotify(false);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -139,5 +140,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (isLock) return;
         if (eventData == null) InventoryManager.instance.OnEndDrag(this, null);
         else InventoryManager.instance.OnEndDrag(this, eventData.pointerEnter.GetComponent<Slot>());
+        eventData.pointerEnter.GetComponent<Slot>().OnNotify(false);
     }
 }

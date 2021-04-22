@@ -20,19 +20,18 @@ public class SkillExplode : SkillScript
             if (skill.isPositive == 1)
             {
                 ILivingEntity entity = executor.GetComponent<ILivingEntity>();
-                StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
+                for (int i = 0; i < skill.repeat; i++)
+                    StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
                 penetrationCount++;
             }
             else if (skill.isPositive == 0)
             {
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-                foreach (Collider2D collider in colliders)
+                foreach (GameObject target in FindAllTarget(radius))
                 {
-                    if (collider.gameObject.CompareTag(targetTag) == false) continue;
-
-                    ILivingEntity entity = collider.GetComponent<ILivingEntity>();
+                    ILivingEntity entity = target.GetComponent<ILivingEntity>();
                     if (entity == null) continue;
-                    StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
+                    for (int i = 0; i < skill.repeat; i++)
+                        StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
                     penetrationCount++;
                 }
             }

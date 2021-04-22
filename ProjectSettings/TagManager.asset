@@ -9,6 +9,7 @@ TagManager:
   - InventoryItem
   - InventoryEquip
   - Shortcut
+  - FloatingDamage
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Minimap
-  - 
+  - FloatingDamage
   - 
   - 
   - 

@@ -34,7 +34,16 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.inventory])) menuToggle[1].isOn = !menuToggle[1].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.awaken])) menuToggle[2].isOn = !menuToggle[2].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.quest])) menuToggle[3].isOn = !menuToggle[3].isOn;
-        if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting])) menuToggle[4].isOn = !menuToggle[4].isOn;
+        if (Input.GetKeyDown(KeySetting.keys[KeyAction.setting]))
+        {
+            int currentOnToggleIndex = -1;
+            for (int i = 0; i < menuToggle.Length; i++)
+            {
+                if (menuToggle[i].isOn) currentOnToggleIndex = i;
+            }
+            if (currentOnToggleIndex == -1) menuToggle[4].isOn = !menuToggle[4].isOn;
+            else menuToggle[currentOnToggleIndex].isOn = false;
+        }
     }
     
     public void TimePuase(bool isPause)

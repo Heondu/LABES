@@ -54,21 +54,7 @@ public class SkillProjectile : SkillScript
     {
         while (true)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-            target = null;
-            float distance = Mathf.Infinity;
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.gameObject.CompareTag(targetTag) == false) continue;
-
-                ILivingEntity entity = collider.GetComponent<ILivingEntity>();
-                if (entity == null) continue;
-                if (distance > Vector3.SqrMagnitude(collider.transform.position - transform.position))
-                {
-                    target = collider.gameObject;
-                    distance = Vector3.SqrMagnitude(target.transform.position - transform.position);
-                }
-            }
+            target = FindTarget(radius);
             yield return null;
         }
     }

@@ -19,6 +19,12 @@ public class Popup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mainStatValue;
     [SerializeField] private TextMeshProUGUI[] addStatText;
     [SerializeField] private TextMeshProUGUI[] addStatValue;
+    [SerializeField] private Color normalColor;
+    [SerializeField] private Color hiQualityColor;
+    [SerializeField] private Color magicColor;
+    [SerializeField] private Color rareColor;
+    [SerializeField] private Color uniqueColor;
+    [SerializeField] private Color legendaryColor;
     private Slot slot;
     private Player player;
 
@@ -59,6 +65,17 @@ public class Popup : MonoBehaviour
         typeText.text = DataManager.Localization(slot.item.type);
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         name.text = $"{DataManager.Localization(slot.item.nameAdd[0])} {DataManager.Localization(slot.item.name)}";
+
+        switch (slot.item.rarityType)
+        {
+            case "Normal": name.color = normalColor; break;
+            case "HiQuality": name.color = hiQualityColor; break;
+            case "Magic": name.color = magicColor; break;
+            case "Rare": name.color = rareColor; break;
+            case "Unique": name.color = uniqueColor; break;
+            case "Legendary": name.color = legendaryColor; break;
+        }
+
         mainStatText.text = DataManager.Localization(slot.item.status);
         mainStatValue.text = slot.item.stat.ToString();
         for (int i = 0; i < addStatText.Length; i++)

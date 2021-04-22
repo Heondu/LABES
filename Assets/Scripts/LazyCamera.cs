@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class LazyCamera : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    public static LazyCamera instance;
+    [SerializeField]
+    private Transform target;
     private Vector3 velocity = Vector3.zero;
     private float smoothTime = 0.3f;
     private float originSize;
+    private bool isShake = false;
 
     private void Awake()
     {
+        if (instance != null) Destroy(this);
+        else instance = this;
+
         if (!target)
         {
             target = GameObject.Find("Player").transform;
@@ -31,13 +37,18 @@ public class LazyCamera : MonoBehaviour
 
     public IEnumerator Shake(float amount, float duration)
     {
-        float time = 0;
-        while (time < duration)
+        if (isShake == false)
         {
-            transform.position += (Vector3)Random.insideUnitCircle * amount;
-            time += Time.deltaTime;
-            yield return null;
+            isShake = true;
+            float time = 0;
+            while (time < duration)
+            {
+                transform.position += (Vector3)Random.insideUnitCircle * amount;
+                time += Time.deltaTime;
+                yield return null;
+            }
         }
+        isShake = false;
     }
 
     public IEnumerator ZoomIn(float amount, float duration)

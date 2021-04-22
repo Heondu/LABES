@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour, ILivingEntity
 {
@@ -6,6 +7,7 @@ public class Player : MonoBehaviour, ILivingEntity
     private PlayerInput playerInput;
     private AnimationController animationController;
     public PlayerStatus status;
+    public UnityEvent onLevelUp = new UnityEvent();
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour, ILivingEntity
         {
             status.exp -= (int)DataManager.experience[status.level]["exp"];
             status.level++;
+            onLevelUp.Invoke();
         }
     }
 
@@ -46,8 +49,8 @@ public class Player : MonoBehaviour, ILivingEntity
     {
         int value = Mathf.RoundToInt(_value);
 
-        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage("Miss", transform.position, damageType);
-        else FloatingDamageManager.instance.FloatingDamage(value.ToString(), transform.position, damageType);
+        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
+        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
 
         if (damageType == DamageType.normal)
         {
