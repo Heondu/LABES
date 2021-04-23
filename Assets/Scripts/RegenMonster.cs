@@ -29,7 +29,7 @@ public class RegenMonster : MonoBehaviour
             if (names.Count > 0)
             {
                 string name = names[index].ToString();
-                GameObject clone = Instantiate(Resources.Load<GameObject>("Prefab/Monsters/Mon000/" + name), enemyHolder.transform);
+                GameObject clone = Instantiate(Resources.Load<GameObject>("Prefab/Monsters/" + name), enemyHolder.transform);
                 clone.GetComponent<Enemy>().Init(name);
                 enemys.Add(clone);
             }

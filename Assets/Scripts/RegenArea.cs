@@ -4,6 +4,10 @@ public class RegenArea : MonoBehaviour
 {
     public Vector2 position;
     public int maxRegenNum;
+
+    public GameObject[] Mon;
+    public int[] prob;
+
     public float eliteSpawnPer;
 
     private void OnDrawGizmosSelected()
