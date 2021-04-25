@@ -19,6 +19,7 @@ public class Popup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mainStatValue;
     [SerializeField] private TextMeshProUGUI[] addStatText;
     [SerializeField] private TextMeshProUGUI[] addStatValue;
+    [SerializeField] private TextMeshProUGUI equipButtonText;
     [SerializeField] private Color normalColor;
     [SerializeField] private Color hiQualityColor;
     [SerializeField] private Color magicColor;
@@ -62,8 +63,10 @@ public class Popup : MonoBehaviour
         icon.sprite = Resources.Load<Sprite>(slot.item.inventoryImage);
         gradeBG.sprite = gradeBGSprite[(int)Enum.Parse(typeof(ItemRarity), slot.item.rarityType)];
         gradeFrame.sprite = gradeFrameSprite[(int)Enum.Parse(typeof(ItemRarity), slot.item.rarityType)];
+        quality.text = slot.item.quality == 0 ? "" : slot.item.quality + "+";
         typeText.text = DataManager.Localization(slot.item.type);
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
+        equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = $"{DataManager.Localization(slot.item.nameAdd[0])} {DataManager.Localization(slot.item.name)}";
 
         switch (slot.item.rarityType)
@@ -88,16 +91,25 @@ public class Popup : MonoBehaviour
     private void UpdateSkillInfo(Slot slot)
     {
         this.slot = slot;
-        icon.sprite = Resources.Load<Sprite>(slot.skill.image);
+        icon.sprite = Resources.Load<Sprite>("icons/skill/" + slot.skill.name);
+        quality.text = slot.skill.quality == 0 ? "" : slot.skill.quality + "+";
         typeText.text = $"{DataManager.Localization(slot.skill.element)}, {DataManager.Localization(slot.skill.weaponClass)}";
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
+        equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.skill.name);
-        mainStatText.text = DataManager.Localization(slot.skill.relatedStatus[0]);
-        if (slot.skill.relatedStatus[0] != "none")
+        StatusList relatedStatus = Resources.Load<GameObject>("Prefabs/Skills/" + slot.skill.name).GetComponent<SkillData>().GetRelatedStatus;
+        if (relatedStatus != StatusList.none)
         {
-            if (slot.skill.relatedStatus[0] == "damage")
-                mainStatValue.text = Mathf.RoundToInt(player.GetStatus(slot.skill.relatedStatus[0]).Value * ((float)slot.skill.amount[0] / 100) + player.GetStatus("fixDamage").Value).ToString();
-            else mainStatValue.text = Mathf.RoundToInt(player.GetStatus(slot.skill.relatedStatus[0]).Value * ((float)slot.skill.amount[0] / 100)).ToString();
+            mainStatText.text = DataManager.Localization(relatedStatus.ToString());
+            if (relatedStatus == StatusList.damage)
+                mainStatValue.text = Mathf.RoundToInt(player.GetStatus(relatedStatus).Value * ((float)slot.skill.amount / 100) + player.GetStatus("fixDamage").Value).ToString();
+            else mainStatValue.text = Mathf.RoundToInt(player.GetStatus(relatedStatus).Value * ((float)slot.skill.amount / 100)).ToString();
+        }
+        else
+        {
+            string status = Resources.Load<GameObject>("Prefabs/Skills/" + slot.skill.name).GetComponent<SkillData>().GetStatus.ToString();
+            mainStatText.text = DataManager.Localization(status);
+            mainStatValue.text = slot.skill.amount.ToString();
         }
         addStatText[0].text = "ÄðÅ¸ÀÓ";
         addStatValue[0].text = slot.skill.cooltime.ToString();
@@ -109,8 +121,10 @@ public class Popup : MonoBehaviour
     {
         this.slot = slot;
         icon.sprite = Resources.Load<Sprite>(slot.item.inventoryImage);
+        quality.text = slot.item.quality == 0 ? "" : slot.item.quality + "+";
         typeText.text = DataManager.Localization(slot.item.type);
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
+        equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.item.name);
     }
 

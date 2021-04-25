@@ -60,6 +60,9 @@ public class InventoryManager : MonoBehaviour
     {
         draggingObject.SetActive(true);
         draggingSlot.icon.sprite = selectedSlot.icon.sprite;
+        if (selectedSlot.item != null) draggingSlot.qualty.text = selectedSlot.item.quality == 0 ? "" : selectedSlot.item.quality + "+";
+        else if (selectedSlot.skill != null) draggingSlot.qualty.text = selectedSlot.skill.quality == 0 ? "" : selectedSlot.skill.quality + "+";
+        selectedSlot.icon.color = Color.clear;
     }
 
     public void OnDrag()
@@ -70,40 +73,44 @@ public class InventoryManager : MonoBehaviour
     public void OnEndDrag(Slot selectedSlot, Slot targetSlot)
     {
         draggingObject.SetActive(false);
-        if (targetSlot == null) return;
-
-        if (targetSlot.useType == UseType.equipSlot)
+        if (targetSlot == null)
         {
-            if (selectedSlot.useType == UseType.weapon && targetSlot.equipType == "weapon") Equip(selectedSlot, targetSlot, true);
-            else if (selectedSlot.useType == UseType.equipment && selectedSlot.item.type == targetSlot.equipType) Equip(selectedSlot, targetSlot, true);
-            else if (selectedSlot.useType == UseType.skill && targetSlot.equipType == "skill") Equip(selectedSlot, targetSlot, true);
-            else if (selectedSlot.useType == UseType.consume && targetSlot.equipType == "consume") Equip(selectedSlot, targetSlot, true);
+            selectedSlot.inventory.UpdateInventory();
+            return;
         }
-        else if (selectedSlot.useType == UseType.equipSlot)
+
+        if (targetSlot.isEquipSlot)
         {
-            if (targetSlot.equipType == "") Equip(selectedSlot, targetSlot, false);
-            else if (selectedSlot.equipType == targetSlot.equipType)
+            if (selectedSlot.useType == UseType.weapon && targetSlot.equipType == "weapon") Equip(selectedSlot, targetSlot);
+            else if (selectedSlot.useType == UseType.equipment && selectedSlot.item.type == targetSlot.equipType) Equip(selectedSlot, targetSlot);
+            else if (selectedSlot.useType == UseType.skill && targetSlot.equipType == "skill") Equip(selectedSlot, targetSlot);
+            else if (selectedSlot.useType == UseType.consume && targetSlot.equipType == "consume") Equip(selectedSlot, targetSlot);
+            else selectedSlot.inventory.UpdateInventory();
+        }
+        else if (selectedSlot.useType == targetSlot.useType)
+        {
+            if (targetSlot.equipType == "" || selectedSlot.equipType == targetSlot.equipType)
             {
                 targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
                 selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
                 selectedSlot.inventory.UpdateInventory();
                 targetSlot.inventory.UpdateInventory();
             }
-            else if (selectedSlot.equipType != targetSlot.equipType) return;
+            else
+            {
+                selectedSlot.inventory.UpdateInventory();
+            }
         }
-        else if (selectedSlot.useType == targetSlot.useType)
+        else
         {
-            targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
-            selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
             selectedSlot.inventory.UpdateInventory();
-            targetSlot.inventory.UpdateInventory();
         }
     }
 
-    private void Equip(Slot selectedSlot, Slot targetSlot, bool isEquip)
+    private void Equip(Slot selectedSlot, Slot targetSlot)
     {
-        if (isEquip) targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
-        else selectedSlot.inventory.ChangeSlot(null, selectedSlot);
+        targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
+        selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
         selectedSlot.inventory.UpdateInventory();
         targetSlot.inventory.UpdateInventory();
     }
@@ -112,46 +119,99 @@ public class InventoryManager : MonoBehaviour
     {
         if (selectedSlot.useType == UseType.weapon)
         {
-            Equip(selectedSlot, equipSlotL.slots[0], true);
+            if (selectedSlot.isEquipSlot)
+            {
+                for (int i = 0; i < inventoryWeapon.slots.Length; i++)
+                {
+                    if (inventoryWeapon.slots[i].item == null)
+                    {
+                        Equip(selectedSlot, inventoryWeapon.slots[i]);
+                        return;
+                    }
+                }
+            }
+            else Equip(selectedSlot, equipSlotL.slots[0]);
         }
         else if (selectedSlot.useType == UseType.equipment)
         {
-            for (int i = 0; i < equipSlotL.slots.Length; i++)
+            if (selectedSlot.isEquipSlot)
             {
-                if (selectedSlot.item.type == equipSlotL.slots[i].equipType)
+                for (int i = 0; i < inventoryEquipment.slots.Length; i++)
                 {
-                    Equip(selectedSlot, equipSlotL.slots[i], true);
-                    return;
+                    if (inventoryEquipment.slots[i].item == null)
+                    {
+                        Equip(selectedSlot, inventoryEquipment.slots[i]);
+                        return;
+                    }
                 }
             }
-            for (int i = 0; i < equipSlotR.slots.Length; i++)
+            else
             {
-                if (selectedSlot.item.type == equipSlotR.slots[i].equipType)
+                for (int i = 0; i < equipSlotL.slots.Length; i++)
                 {
-                    Equip(selectedSlot, equipSlotR.slots[i], true);
-                    return;
+                    if (selectedSlot.item.type == equipSlotL.slots[i].equipType)
+                    {
+                        Equip(selectedSlot, equipSlotL.slots[i]);
+                        return;
+                    }
+                }
+                for (int i = 0; i < equipSlotR.slots.Length; i++)
+                {
+                    if (selectedSlot.item.type == equipSlotR.slots[i].equipType)
+                    {
+                        Equip(selectedSlot, equipSlotR.slots[i]);
+                        return;
+                    }
                 }
             }
         }
         else if (selectedSlot.useType == UseType.skill)
         {
-            for (int i = 0; i < skillSlot.slots.Length; i++)
+            if (selectedSlot.isEquipSlot)
             {
-                if (skillSlot.slots[i].skill == null)
+                for (int i = 0; i < inventorySkill.slots.Length; i++)
                 {
-                    Equip(selectedSlot, skillSlot.slots[i], true);
-                    return;
+                    if (inventorySkill.slots[i].skill == null)
+                    {
+                        Equip(selectedSlot, inventorySkill.slots[i]);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < skillSlot.slots.Length; i++)
+                {
+                    if (skillSlot.slots[i].skill == null)
+                    {
+                        Equip(selectedSlot, skillSlot.slots[i]);
+                        return;
+                    }
                 }
             }
         }
         else if (selectedSlot.useType == UseType.consume)
         {
-            for (int i = 0; i < consumeSlot.slots.Length; i++)
+            if (selectedSlot.isEquipSlot)
             {
-                if (consumeSlot.slots[i].item == null)
+                for (int i = 0; i < inventoryConsume.slots.Length; i++)
                 {
-                    Equip(selectedSlot, consumeSlot.slots[i], true);
-                    return;
+                    if (inventoryConsume.slots[i].item == null)
+                    {
+                        Equip(selectedSlot, inventoryConsume.slots[i]);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < consumeSlot.slots.Length; i++)
+                {
+                    if (consumeSlot.slots[i].item == null)
+                    {
+                        Equip(selectedSlot, consumeSlot.slots[i]);
+                        return;
+                    }
                 }
             }
         }

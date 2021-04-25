@@ -3,36 +3,35 @@ using UnityEngine;
 
 public class RegenMonster : MonoBehaviour
 {
-    public void SpawnMonster(Vector2 position, int regenNumMax, float eliteSpawnPer)
+    public void SpawnMonster(GameObject[] monsters, int[] prob, Vector2 position, int regenNumMax, float eliteSpawnPer)
     {
         GameObject enemyHolder = Instantiate(Resources.Load<GameObject>("Prefabs/EnemyHolder"));
         List<GameObject> enemys = new List<GameObject>();
+        int sumOfProb = 0;
+
+        for (int i = 0; i < prob.Length; i++)
+        {
+            sumOfProb += prob[i];
+        }
 
         for (int i = 0; i < regenNumMax; i++)
         {
-            List<object> names;
-            int index;
-            do
+            int rand = Random.Range(0, sumOfProb);
+            int sum = 0;
+            int index = 0;
+            for (int j = 0; j < prob.Length; j++)
             {
-                if (Random.Range(0f, 100f) <= eliteSpawnPer)
+                sum += prob[j];
+                if (rand < sum)
                 {
-                    names = DataManager.monster.FindAll("class", "elite", "name");
-                    index = Random.Range(0, names.Count);
+                    index = j;
+                    break;
                 }
-                else
-                {
-                    names = DataManager.monster.FindAll("class", "pawn", "name");
-                    index = Random.Range(0, names.Count);
-                }
-            } while (names.Count <= 0);
-
-            if (names.Count > 0)
-            {
-                string name = names[index].ToString();
-                GameObject clone = Instantiate(Resources.Load<GameObject>("Prefab/Monsters/" + name), enemyHolder.transform);
-                clone.GetComponent<Enemy>().Init(name);
-                enemys.Add(clone);
             }
+
+            GameObject clone = Instantiate(monsters[index], enemyHolder.transform);
+            clone.GetComponent<Enemy>().Init();
+            enemys.Add(clone);
         }
 
         int enemyColumn = (int)Mathf.Sqrt(regenNumMax);
@@ -46,7 +45,6 @@ public class RegenMonster : MonoBehaviour
 
                 Bounds enemyBounds = enemys[index].GetComponent<CapsuleCollider2D>().bounds;
                 Vector2 newPos = position + new Vector2(enemyBounds.size.x * x, enemyBounds.size.y * y);
-                //Vector2 offset
                 enemys[index].transform.position = newPos;
             }
         }

@@ -17,10 +17,15 @@ public class UICooltimeViewer : MonoBehaviour
 
     private void Update()
     {
-        if (shortcut.GetSkill() == null) return;
-        if (playerSkill.isSkillCool.ContainsKey(shortcut.GetSkill()) == false) return;
-        if (playerSkill.isSkillCool[shortcut.GetSkill()])
+        if (shortcut.GetSkill() == null || playerSkill.isSkillCool.ContainsKey(shortcut.GetSkill()) == false)
+        {
+            cooltimeImage.fillAmount = 0;
+            return;
+        }
+        else if (playerSkill.isSkillCool[shortcut.GetSkill()])
+        {
             cooltimeImage.fillAmount = 1 - playerSkill.skillCool[shortcut.GetSkill()].GetTime / shortcut.GetSkill().cooltime;
+        }
         else cooltimeImage.fillAmount = 0;
     }
 }

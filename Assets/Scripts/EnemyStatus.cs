@@ -1,5 +1,7 @@
-﻿[System.Serializable]
-public class EnemyStatus
+﻿using System;
+
+[System.Serializable]
+public class EnemyStatus : IStatus
 {
     public int HP;
     public int maxHP;
@@ -51,34 +53,39 @@ public class EnemyStatus
         allResist.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd));
     }
 
-    public Status GetStatus(string name)
+    public Status GetStatus(StatusList name)
     {
         switch (name)
         {
-            case "strength": return strength;
-            case "agility": return agility;
-            case "intelligence": return intelligence;
-            case "endurance": return endurance;
-            case "damage": return damage;
-            case "defence": return defence;
-            case "allResist": return allResist;
-            case "fireResist": return fireResist;
-            case "coldResist": return coldResist;
-            case "darkResist": return darkResist;
-            case "lightResist": return lightResist;
-            case "fireDamage": return fireDamage;
-            case "coldDamage": return coldDamage;
-            case "darkDamage": return darkDamage;
-            case "lightDamage": return lightDamage;
-            case "fixDamage": return fixDamage;
-            case "critChance": return critChance;
-            case "critResist": return critResist;
-            case "critDamage": return critDamage;
-            case "avoidance": return avoidance;
-            case "accuracy": return accuracy;
-            case "reduceMana": return reduceMana;
-            case "reduceCool": return reduceCool;
+            case StatusList.strength: return strength;
+            case StatusList.agility: return agility;
+            case StatusList.intelligence: return intelligence;
+            case StatusList.endurance: return endurance;
+            case StatusList.damage: return damage;
+            case StatusList.defence: return defence;
+            case StatusList.allResist: return allResist;
+            case StatusList.fireResist: return fireResist;
+            case StatusList.coldResist: return coldResist;
+            case StatusList.darkResist: return darkResist;
+            case StatusList.lightResist: return lightResist;
+            case StatusList.fireDamage: return fireDamage;
+            case StatusList.coldDamage: return coldDamage;
+            case StatusList.darkDamage: return darkDamage;
+            case StatusList.lightDamage: return lightDamage;
+            case StatusList.fixDamage: return fixDamage;
+            case StatusList.critChance: return critChance;
+            case StatusList.critResist: return critResist;
+            case StatusList.critDamage: return critDamage;
+            case StatusList.avoidance: return avoidance;
+            case StatusList.accuracy: return accuracy;
+            case StatusList.reduceMana: return reduceMana;
+            case StatusList.reduceCool: return reduceCool;
         }
         return null;
+    }
+
+    public Status GetStatus(string name)
+    {
+        return GetStatus((StatusList)Enum.Parse(typeof(StatusList), name));
     }
 }

@@ -8,6 +8,8 @@ public class Player : MonoBehaviour, ILivingEntity
     private AnimationController animationController;
     public PlayerStatus status;
     public UnityEvent onLevelUp = new UnityEvent();
+    [SerializeField]
+    private float moveSpeed;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour, ILivingEntity
     private void Update()
     {
         animationController.Movement(playerInput.GetAxis());
-        if (!IsMove()) movement.Execute(playerInput.GetAxis());
+        if (!IsMove()) movement.Execute(playerInput.GetAxis(), moveSpeed);
 
         status.CalculateDerivedStatus();
         LevelUp();
@@ -66,9 +68,18 @@ public class Player : MonoBehaviour, ILivingEntity
         }
     }
 
+    public Status GetStatus(StatusList name)
+    {
+        return status.GetStatus(name);
+    }
     public Status GetStatus(string name)
     {
         return status.GetStatus(name);
+    }
+
+    public object GetValue(StatusList name)
+    {
+        return status.GetValue(name);
     }
 
     public object GetValue(string name)

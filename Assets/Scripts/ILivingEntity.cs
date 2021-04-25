@@ -2,5 +2,5 @@
 {
     void TakeDamage(float _value, DamageType damageType);
 
-    Status GetStatus(string name);
+    Status GetStatus(StatusList name);
 }

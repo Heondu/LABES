@@ -1,52 +1,98 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillExplode : SkillScript
+[RequireComponent(typeof(SkillData))]
+public class SkillExplode : MonoBehaviour
 {
     [SerializeField]
-    private float radius;
-    private int penetrationCount = 0;
+    protected float radius = 1;
+    [SerializeField]
+    protected float delay = 1f;
+    [SerializeField]
+    protected bool singleTarget;
+    protected int penetrationCount = 0;
+    protected SkillData skillData;
 
-    public override void Execute(GameObject executor, string targetTag, Skill skill)
+    protected virtual void Awake()
     {
-        base.Execute(executor, targetTag, skill);
-        StartCoroutine("CoExecute");
+        skillData = GetComponent<SkillData>();
+    }
+
+    protected virtual void Start()
+    {
+        StartCoroutine(CoExecute());
     }
 
     private IEnumerator CoExecute()
     {
         while (true)
         {
-            if (skill.isPositive == 1)
-            {
-                ILivingEntity entity = executor.GetComponent<ILivingEntity>();
-                for (int i = 0; i < skill.repeat; i++)
-                    StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
-                penetrationCount++;
-            }
-            else if (skill.isPositive == 0)
-            {
-                foreach (GameObject target in FindAllTarget(radius))
-                {
-                    ILivingEntity entity = target.GetComponent<ILivingEntity>();
-                    if (entity == null) continue;
-                    for (int i = 0; i < skill.repeat; i++)
-                        StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
-                    penetrationCount++;
-                }
-            }
-
-            if (skill != null)
-            {
-                if (timer.IsTimeOut(skill.lifetime)) Destroy(gameObject);
-                if (skill.penetration <= penetrationCount) Destroy(gameObject);
-            }
-
-            yield return new WaitForSeconds(skill.delay);
+            Execute();
+            yield return new WaitForSeconds(delay);
         }
     }
 
-    private void OnDrawGizmos()
+    protected virtual void Execute()
+    {
+        Skill skill = skillData.skill;
+        List<GameObject> targets = new List<GameObject>();
+        if (skill.isPositive == 1)
+        {
+            targets.Add(skillData.executor);
+        }
+        else if (skill.isPositive == 0)
+        {
+            if (singleTarget) targets.Add(FindTarget(radius));
+            else targets = FindAllTarget(radius);
+        }
+        foreach (GameObject target in targets)
+        {
+            if (target == null) continue;
+            ILivingEntity targetEntity = target.GetComponent<ILivingEntity>();
+            for (int i = 0; i < skillData.AttackNum; i++)
+            {
+                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
+            }
+            penetrationCount++;
+            if (penetrationCount >= skillData.penetration)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    protected GameObject FindTarget(float radius)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        GameObject target = null;
+        float distance = Mathf.Infinity;
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.CompareTag(skillData.targetTag) == false) continue;
+
+            float newDistance = Vector3.SqrMagnitude(collider.transform.position - transform.position);
+            if (distance > newDistance)
+            {
+                target = collider.gameObject;
+                distance = newDistance;
+            }
+        }
+        return target;
+    }
+
+    protected List<GameObject> FindAllTarget(float radius)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        List<GameObject> targetList = new List<GameObject>();
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag(skillData.targetTag)) targetList.Add(collider.gameObject);
+        }
+        return targetList;
+    }
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
     }

@@ -1,70 +1,77 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
-public class SkillBuff : SkillScript
+[RequireComponent(typeof(SkillData))]
+public class SkillBuff : MonoBehaviour
 {
-    private List<ILivingEntity> entityList = new List<ILivingEntity>();
-    private Transform buffHolder;
-    private Transform buffUIHolder;
-    private GameObject buffPrefab;
-    public float currentTime = 0;
-    private GameObject clone;
+    [SerializeField]
+    protected float radius;
+    protected List<ILivingEntity> entityList = new List<ILivingEntity>();
+    protected Transform buffHolder;
+    protected Transform buffUIHolder;
+    protected GameObject buffPrefab;
+    protected SkillData skillData;
+    protected SkillLifetime skillLifetime;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         buffHolder = GameObject.Find("BuffHolder").transform;
         buffUIHolder = GameObject.Find("Buff").transform;
+        skillData = GetComponent<SkillData>();
+        skillLifetime = GetComponent<SkillLifetime>();
         buffPrefab = Resources.Load<GameObject>("Prefabs/UI/Buff");
     }
 
-    public override void Execute(GameObject executor, string targetTag, Skill skill)
+    protected virtual void Start()
     {
-        base.Execute(executor, targetTag, skill);
-
         Transform buff = buffHolder.Find(gameObject.name);
         if (buff != null)
         {
-            buff.GetComponent<SkillBuff>().currentTime = 0;
+            buff.GetComponent<SkillLifetime>().ResetTime();
             Destroy(gameObject);
-            return;
         }
+        else
+        {
+            transform.SetParent(buffHolder);
+            Execute();
+        }
+    }
 
+    protected virtual void Execute()
+    {
+        Skill skill = skillData.skill;
+        List<GameObject> targets = new List<GameObject>();
         if (skill.isPositive == 1)
         {
-            ILivingEntity entity = executor.GetComponent<ILivingEntity>();
-            entityList.Add(entity);
-            StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
+            targets.Add(skillData.executor);
         }
         else if (skill.isPositive == 0)
         {
-            foreach (GameObject target in FindAllTarget(skill.size))
+            targets = FindAllTarget(radius);
+        }
+        foreach (GameObject target in targets)
+        {
+            ILivingEntity targetEntity = target.GetComponent<ILivingEntity>();
+            entityList.Add(targetEntity);
+            for (int i = 0; i < skill.repeat; i++)
             {
-                ILivingEntity entity = target.GetComponent<ILivingEntity>();
-                if (entity != null)
-                {
-                    entityList.Add(entity);
-                    StatusCalculator.CalcSkillStatus(executorEntity, entity, skill);
-                }
+                StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
             }
         }
 
-        transform.parent = buffHolder;
-        clone = Instantiate(buffPrefab, buffUIHolder);
-        clone.GetComponent<UIBuffLifetimeViewer>().Init(this, skill);
-        StartCoroutine("LifeTime");
+        GameObject clone = Instantiate(buffPrefab, buffUIHolder);
+        clone.GetComponent<UIBuffLifetimeViewer>().Init(skill, skillLifetime);
     }
 
-    public IEnumerator LifeTime()
+    protected List<GameObject> FindAllTarget(float radius)
     {
-        currentTime = 0;
-        while (currentTime < skill.lifetime)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        List<GameObject> targetList = new List<GameObject>();
+        foreach (Collider2D collider in colliders)
         {
-            currentTime += Time.deltaTime;
-            yield return null;
+            if (collider.CompareTag(skillData.targetTag)) targetList.Add(collider.gameObject);
         }
-        Destroy(clone);
-        Destroy(gameObject);
+        return targetList;
     }
 
     private void OnDestroy()
@@ -73,9 +80,14 @@ public class SkillBuff : SkillScript
         {
             for (int i = 0; i < 2; i++)
             {
-                Status status = entity.GetStatus(skill.status[i]);
-                if (status != null) status.RemoveAllModifiersFromSource(skill);
+                Status status = entity.GetStatus(skillData.GetStatus);
+                if (status != null) status.RemoveAllModifiersFromSource(skillData.skill);
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

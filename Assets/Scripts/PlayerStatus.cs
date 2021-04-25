@@ -1,8 +1,10 @@
-﻿[System.Serializable]
-public class PlayerStatus
+﻿using System;
+
+[System.Serializable]
+public class PlayerStatus : IStatus
 {
-    public int HP = 0;
-    public int maxHP = 1000;
+    public int HP;
+    public int maxHP;
     public int mana = 0;
     public int maxMana = 100;
     public float exp = 0;
@@ -32,8 +34,10 @@ public class PlayerStatus
     public Status reduceMana;
     public Status reduceCool;
     public Status experience;
+    public Status itemRange;
 
     private const float multValue = 0.05f;
+
 
     public void CalculateDerivedStatus()
     {
@@ -66,49 +70,60 @@ public class PlayerStatus
         allResist.AddModifier(new StatusModifier(multValue, StatusModType.PercentAdd, endurance));
     }
 
-    public Status GetStatus(string name)
+    public Status GetStatus(StatusList name)
     {
         switch (name)
         {
-            case "strength": return strength;
-            case "agility": return agility;
-            case "intelligence": return intelligence;
-            case "endurance": return endurance;
-            case "damage": return damage;
-            case "defence": return defence;
-            case "allResist": return allResist;
-            case "fireResist": return fireResist;
-            case "coldResist": return coldResist;
-            case "darkResist": return darkResist;
-            case "lightResist": return lightResist;
-            case "fireDamage": return fireDamage;
-            case "coldDamage": return coldDamage;
-            case "darkDamage": return darkDamage;
-            case "lightDamage": return lightDamage;
-            case "fixDamage": return fixDamage;
-            case "critChance": return critChance;
-            case "critResist": return critResist;
-            case "critDamage": return critDamage;
-            case "avoidance": return avoidance;
-            case "accuracy": return accuracy;
-            case "reduceMana": return reduceMana;
-            case "reduceCool": return reduceCool;
-            case "experience": return experience;
+            case StatusList.strength: return strength;
+            case StatusList.agility: return agility;
+            case StatusList.intelligence: return intelligence;
+            case StatusList.endurance: return endurance;
+            case StatusList.damage: return damage;
+            case StatusList.defence: return defence;
+            case StatusList.allResist: return allResist;
+            case StatusList.fireResist: return fireResist;
+            case StatusList.coldResist: return coldResist;
+            case StatusList.darkResist: return darkResist;
+            case StatusList.lightResist: return lightResist;
+            case StatusList.fireDamage: return fireDamage;
+            case StatusList.coldDamage: return coldDamage;
+            case StatusList.darkDamage: return darkDamage;
+            case StatusList.lightDamage: return lightDamage;
+            case StatusList.fixDamage: return fixDamage;
+            case StatusList.critChance: return critChance;
+            case StatusList.critResist: return critResist;
+            case StatusList.critDamage: return critDamage;
+            case StatusList.avoidance: return avoidance;
+            case StatusList.accuracy: return accuracy;
+            case StatusList.reduceMana: return reduceMana;
+            case StatusList.reduceCool: return reduceCool;
+            case StatusList.experience: return experience;
+            case StatusList.itemRange: return itemRange;
+        }
+        return null;
+    }
+
+    public Status GetStatus(string name)
+    {
+        return GetStatus((StatusList)Enum.Parse(typeof(StatusList), name));
+    }
+
+    public object GetValue(StatusList name)
+    {
+        switch (name)
+        {
+            case StatusList.HP: return HP;
+            case StatusList.maxHP: return maxHP;
+            case StatusList.mana: return mana;
+            case StatusList.maxMana: return maxMana;
+            case StatusList.exp: return exp;
+            case StatusList.level: return level;
         }
         return null;
     }
 
     public object GetValue(string name)
     {
-        switch (name)
-        {
-            case "HP": return HP;
-            case "maxHP": return maxHP;
-            case "mana": return mana;
-            case "maxMana": return maxMana;
-            case "exp": return exp;
-            case "level": return level;
-        }
-        return null;
+        return GetValue((StatusList)Enum.Parse(typeof(StatusList), name));
     }
 }

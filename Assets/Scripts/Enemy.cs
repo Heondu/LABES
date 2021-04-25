@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, ILivingEntity
 {
+    [SerializeField]
+    private string id;
     private Movement movement;
     private EnemyController enemyController;
     private EnemyAttack enemyAttack;
     private AnimationController animationController;
-    private new string name;
     public EnemyStatus status;
     public Dictionary<string, object> monster = new Dictionary<string, object>();
     public Dictionary<string, object> monlvl = new Dictionary<string, object>();
     private float delay;
     private Flash flash;
     private float hitTime = 0.5f;
+    [SerializeField]
+    private float moveSpeed;
 
     private void Awake()
     {
@@ -30,11 +33,11 @@ public class Enemy : MonoBehaviour, ILivingEntity
         switch (enemyController.GetState())
         {
             case EnemyState.STATE_PATROL:
-                movement.Execute(enemyController.GetAxis());
+                movement.Execute(enemyController.GetAxis(), moveSpeed);
                 animationController.Movement(enemyController.GetAxis());
                 break;
             case EnemyState.STATE_CHASE:
-                movement.Execute(enemyController.GetAxis());
+                movement.Execute(enemyController.GetAxis(), moveSpeed);
                 animationController.Movement(enemyController.GetAxis());
                 break;
             case EnemyState.STATE_ATTACK:
@@ -53,15 +56,14 @@ public class Enemy : MonoBehaviour, ILivingEntity
         }
         else
         {
-            movement.Execute(enemyController.GetAxis());
+            movement.Execute(enemyController.GetAxis(), moveSpeed);
             animationController.Movement(enemyController.GetAxis());
         }
     }
 
-    public void Init(string name)
+    public void Init()
     {
-        this.name = name;
-        monster = DataManager.monster.FindDic("name", name);
+        monster = DataManager.monster.FindDic("name", id);
         monlvl = DataManager.monlvl.FindDic("Level", monster["monlvl"]);
         status.maxHP = 50;
         status.HP = status.maxHP;
@@ -90,7 +92,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
             StartCoroutine(enemyController.Stop(hitTime));
             if (damageType == DamageType.critical)
             {
-                StartCoroutine(LazyCamera.instance.Shake(0.1f, 0.5f));
+                StartCoroutine(LazyCamera.instance.Shake(0.05f, 0.3f));
             }
         }
         else if (damageType == DamageType.heal) status.HP = Mathf.Min(status.HP + value, status.maxHP);
@@ -101,6 +103,11 @@ public class Enemy : MonoBehaviour, ILivingEntity
             ItemGenerator.instance.DropItem((int)monlvl["raritymin"], (int)monlvl["raritymax"], monster["class"].ToString(), transform.position);
             Destroy(gameObject);
         }
+    }
+
+    public Status GetStatus(StatusList name)
+    {
+        return status.GetStatus(name);
     }
 
     public Status GetStatus(string name)

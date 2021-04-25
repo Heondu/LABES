@@ -20,6 +20,7 @@ public class Item
     public string[] nameAdd = new string[additionalMax];
     public string[] statusAdd = new string[additionalMax];
     public int[] statAdd = new int[additionalMax];
-    public int quantity = 1;
+    public int quality = 0;
+    public bool isNew = true;
     public Skill skill;
 }

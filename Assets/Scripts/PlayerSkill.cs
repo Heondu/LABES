@@ -64,16 +64,19 @@ public class PlayerSkill : MonoBehaviour
 
     public void Execute(Skill skill)
     {
-        SkillLoader.SkillLoad(gameObject, "Enemy", skill, transform.position);
+        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        SkillLoader.instance.LoadSkill(gameObject, player.status, "Enemy", skill, transform.position, dir);
         isSkillCool[skill] = true;
         skillCool[skill] = new Timer();
         StartCoroutine("Cooltime", skill);
-        animationController.Attack((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized);
+        animationController.Attack(dir);
     }
 
     private IEnumerator Cooltime(Skill skill)
     {
-        while (skillCool[skill].IsTimeOut(Mathf.Max(0.3f, skill.cooltime - player.GetStatus("reduceCool").Value / 10)) == false)
+        float reduceCool = 0;
+        if (player.GetStatus(StatusList.reduceCool).Value != 0) reduceCool = player.GetStatus(StatusList.reduceCool).Value / 100;
+        while (skillCool[skill].IsTimeOut(Mathf.Max(0.3f, skill.cooltime - reduceCool)) == false)
         {
             yield return null;
         }

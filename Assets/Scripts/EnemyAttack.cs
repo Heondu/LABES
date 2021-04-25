@@ -10,6 +10,14 @@ public class EnemyAttack : MonoBehaviour
     public List<int> probList = new List<int>();
     public Dictionary<Skill, bool> isSkillCool = new Dictionary<Skill, bool>();
     public Dictionary<Skill, Timer> skillCool = new Dictionary<Skill, Timer>();
+    private Transform player;
+    private Enemy enemy;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>().transform;
+        enemy = GetComponent<Enemy>();
+    }
 
     private bool IsAttack(Skill skill)
     {
@@ -28,7 +36,7 @@ public class EnemyAttack : MonoBehaviour
             if (num < probList[i]) skill = skillList[i];
         }
         if (!IsAttack(skill)) return;
-        SkillLoader.SkillLoad(gameObject, "Player", skill, transform.position);
+        SkillLoader.instance.LoadSkill(gameObject, enemy.status, "Player", skill, transform.position, (player.position - transform.position).normalized);
         isCool = true;
         isSkillCool[skill] = true;
         StartCoroutine("Cooltime", skill);

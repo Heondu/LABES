@@ -5,8 +5,7 @@ public class UIBuffLifetimeViewer : MonoBehaviour
 {
     private Image icon;
     private Image cooltimeImage;
-    private SkillBuff buff;
-    private Skill skill;
+    private SkillLifetime skillLifetime;
 
     private void Awake()
     {
@@ -14,15 +13,20 @@ public class UIBuffLifetimeViewer : MonoBehaviour
         cooltimeImage = transform.Find("Cooltime").GetComponent<Image>();
     }
 
-    public void Init(SkillBuff buff, Skill skill)
+    public void Init(Skill skill, SkillLifetime skillLifetime)
     {
-        this.buff = buff;
-        this.skill = skill;
-        icon.sprite = Resources.Load<Sprite>(skill.image);
+        this.skillLifetime = skillLifetime;
+        skillLifetime.onDestroy.AddListener(Destroy);
+        icon.sprite = Resources.Load<Sprite>("icons/skill/" + skill.name);
     }
 
     private void Update()
     {
-        cooltimeImage.fillAmount = buff.currentTime / skill.lifetime;
+        cooltimeImage.fillAmount = skillLifetime.GetCurrentTime / skillLifetime.GetLifetime;
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

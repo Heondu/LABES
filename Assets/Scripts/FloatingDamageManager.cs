@@ -36,7 +36,8 @@ public class FloatingDamageManager : MonoBehaviour
                 float distance = Mathf.Abs(damageList[executor][i- 1].transform.localPosition.y - damageList[executor][i].transform.localPosition.y);
                 float sizeY = damageList[executor][i].GetComponent<RectTransform>().sizeDelta.y;
                 float prevDamagePos = damageList[executor][i].transform.localPosition.y;
-                damageList[executor][i - 1].SetPos(Mathf.Max(0, (prevDamagePos + (sizeY - distance)) / 200));
+                float newPos = Mathf.Max(0, (prevDamagePos + (sizeY - distance)) / (100 * damageList[executor].Count));
+                damageList[executor][i - 1].SetPos(newPos);
             }
         }
     }

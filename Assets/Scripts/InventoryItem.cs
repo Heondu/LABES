@@ -5,12 +5,10 @@ public class InventoryItem : Inventory
 {
     public List<Item> items = new List<Item>();
     public Slot[] slots;
-    public Slot[] prevSlot;
 
     private void Awake()
     {
         slots = GetComponentsInChildren<Slot>();
-        prevSlot = GetComponentsInChildren<Slot>();
         for (int i = 0; i < slots.Length; i++)
             items.Add(null);
     }
@@ -25,24 +23,7 @@ public class InventoryItem : Inventory
 
     public override void ChangeSlot(Slot selectedSlot, Slot targetSlot)
     {
-        if (selectedSlot == null)
-        {
-            if (targetSlot.useType == UseType.equipSlot)
-            {
-                if (prevSlot[targetSlot.index] != null) prevSlot[targetSlot.index].isEquip = false;
-            }
-            items[targetSlot.index] = null;
-        }
-        else
-        {
-            if (targetSlot.useType == UseType.equipSlot)
-            {
-                if (prevSlot[targetSlot.index] != null) prevSlot[targetSlot.index].isEquip = false;
-                selectedSlot.isEquip = true;
-                prevSlot[targetSlot.index] = selectedSlot;
-            }
-            items[targetSlot.index] = selectedSlot.item;
-        }
+        items[targetSlot.index] = selectedSlot.item;
     }
 
     public void RemoveItem(Item targetItem)

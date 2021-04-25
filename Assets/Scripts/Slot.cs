@@ -24,9 +24,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public Inventory inventory;
     public Popup popup;
     public bool isEquip;
+    public bool isEquipSlot;
     [SerializeField]
     private Notification notification;
-    private bool isNotified = false;
 
     protected virtual void Awake()
     {
@@ -53,27 +53,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         inventory.onDisable.AddListener(OnNotify);
     }
 
-    private void OnEnable()
-    {
-        UpdateSlot();
-    }
-
-    private void OnNotify(bool isNotified)
+    public void OnNotify(bool value)
     {
         if (notification == null) return;
 
-        if (isNotified)
+        notification.Notify(value);
+
+        if (value == false)
         {
-            if (this.isNotified == false)
-            {
-                notification.Notify(true);
-                this.isNotified = true;
-            }
+            if (item != null) item.isNew = false;
+            else if (skill != null) skill.isNew = false;
         }
-        else
-        {
-            notification.Notify(false);
-        }
+    }
+
+    private void OnEnable()
+    {
+        UpdateSlot();
     }
 
     private void UpdateSlot()
@@ -82,6 +77,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             icon.sprite = Resources.Load<Sprite>(item.inventoryImage);
             icon.color = Color.white;
+            if (quality != null) quality.text = item.quality == 0 ? "" : item.quality + "+";
             if (useType == UseType.weapon || useType == UseType.equipment)
             {
                 if (gradeBG != null && gradeFrame != null)
@@ -90,17 +86,19 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                     gradeFrame.sprite = gradeFrameSprite[(int)Enum.Parse(typeof(ItemRarity), item.rarityType)];
                 }
             }
-            OnNotify(true);
+            OnNotify(item.isNew);
         }
         else if (skill != null)
         {
-            icon.sprite = Resources.Load<Sprite>(skill.image);
+            icon.sprite = Resources.Load<Sprite>("icons/skill/" + skill.name);
             icon.color = Color.white;
-            OnNotify(true);
+            if (quality != null) quality.text = skill.quality == 0 ? "" : skill.quality + "+";
+            OnNotify(skill.isNew);
         }
         else
         {
             icon.color = Color.clear;
+            if (quality != null) quality.text = "";
             if (useType == UseType.weapon || useType == UseType.equipment)
             {
                 if (gradeBG != null && gradeFrame != null)
@@ -109,7 +107,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                     gradeFrame.sprite = gradeFrameSprite[0];
                 }
             }
-            isNotified = false;
+            OnNotify(false);
         }
     }
 
@@ -138,8 +136,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public void OnEndDrag(PointerEventData eventData)
     {
         if (isLock) return;
-        if (eventData == null) InventoryManager.instance.OnEndDrag(this, null);
-        else InventoryManager.instance.OnEndDrag(this, eventData.pointerEnter.GetComponent<Slot>());
-        eventData.pointerEnter.GetComponent<Slot>().OnNotify(false);
+        Slot slot = eventData.pointerEnter.GetComponent<Slot>();
+        if (slot == null) InventoryManager.instance.OnEndDrag(this, null);
+        else if (slot != null)
+        {
+            InventoryManager.instance.OnEndDrag(this, slot);
+            slot.OnNotify(false);
+        }
     }
 }

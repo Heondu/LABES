@@ -1,72 +1,51 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SkillProjectile : SkillScript
+[RequireComponent(typeof(SkillData))]
+[RequireComponent(typeof(ProjectileMove))]
+public class SkillProjectile : MonoBehaviour
 {
+    protected GameObject target;
+    protected int penetrationCount = 0;
+    protected SkillData skillData;
+    protected ProjectileMove projectileMove;
     [SerializeField]
-    private float radius;
-    private GameObject target;
-    private Movement movement;
-    private int penetrationCount = 0;
+    protected string[] nextSkills;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        movement = GetComponent<Movement>();
+        skillData = GetComponent<SkillData>();
+        projectileMove = GetComponent<ProjectileMove>();
     }
 
-    protected override void Update()
+    protected virtual void Start()
     {
-        if (skill != null)
+        projectileMove.SetSpeed(skillData.speed);
+    }
+
+    protected virtual void Update()
+    {
+        
+    }
+
+    protected virtual void Execute()
+    {
+        for (int i = 0; i < nextSkills.Length; i++)
         {
-            if (timer.IsTimeOut(skill.lifetime)) Destroy(gameObject);
+            SkillLoader.instance.LoadSkill(skillData, DataManager.skillDB[nextSkills[i]], transform.position, transform.up);
         }
-        movement.Execute(transform.up, skill.speed);
-        SetDir();
-    }
 
-    public override void Execute(GameObject executor, string targetTag, Skill skill)
-    {
-        base.Execute(executor, targetTag, skill);
-        float angle = 0;
-        if (targetTag == "Enemy") angle = Rotation.GetAngle(executor.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        else if (targetTag == "Player") angle = Rotation.GetAngle(executor.transform.position, GameObject.FindWithTag(targetTag).transform.position);
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.position += transform.up * 1;
-        StartCoroutine("FindTarget");
-    }
-
-    private void SetDir()
-    {
-        if (target == null) return;
-
-        Vector2 dir = (target.transform.position - transform.position).normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * skill.guide);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
-
-    private IEnumerator FindTarget()
-    {
-        while (true)
+        penetrationCount++;
+        if (penetrationCount >= skillData.penetration)
         {
-            target = FindTarget(radius);
-            yield return null;
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(targetTag))
+        if (collision.CompareTag(skillData.targetTag))
         {
-            penetrationCount++;
-            for (int i = 0; i < nextSkills.Length; i++)
-                if (nextSkills[i] != "") SkillLoader.SkillLoad(executor, targetTag, DataManager.skillDB[nextSkills[i]], transform.position);
-            if (skill.penetration <= penetrationCount) Destroy(gameObject);
+            Execute();
         }
     }
 }
