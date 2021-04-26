@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
     private GameObject[] inventorys;
     [SerializeField]
     private Toggle[] menuToggle;
+    public UnityEvent<bool> onUIActive = new UnityEvent<bool>();
+    private bool isUIActive = false;
 
     private void Awake()
     {
@@ -43,6 +46,31 @@ public class UIManager : MonoBehaviour
             }
             if (currentOnToggleIndex == -1) menuToggle[4].isOn = !menuToggle[4].isOn;
             else menuToggle[currentOnToggleIndex].isOn = false;
+        }
+
+        IsUIOpen();
+    }
+
+    private void IsUIOpen()
+    {
+        bool flag = false;
+        for (int i = 0; i < menuToggle.Length; i++)
+        {
+            if (menuToggle[i].isOn)
+            {
+                flag = true;
+            }
+        }
+
+        if (isUIActive == false && flag == true)
+        {
+            isUIActive = true;
+            onUIActive.Invoke(true);
+        }
+        else if (isUIActive == true && flag == false)
+        {
+            isUIActive = false;
+            onUIActive.Invoke(false);
         }
     }
     

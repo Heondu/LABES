@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -8350701622017667061}
   - component: {fileID: 2893695376510359576}
   - component: {fileID: 5068702069166854105}
-  - component: {fileID: -4747956732755234248}
   - component: {fileID: 1489342695417335465}
+  - component: {fileID: 3898855002144935179}
   m_Layer: 0
   m_Name: skill001
   m_TagString: Untagged
@@ -149,19 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - skill002
---- !u!114 &-4747956732755234248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337871619095031342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fb7e5a52f898224db0e02debbb0891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &1489342695417335465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +162,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0
+--- !u!114 &3898855002144935179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337871619095031342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdd92e91cb1ba3409e1cecd9987c23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: {x: 0, y: 0}
+  speed: 1
+  useSkillSpeed: 1

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SkillProjectile))]
 [RequireComponent(typeof(ProjectileMove))]
 [RequireComponent(typeof(ProjectileRotate))]
 public class WheelRotatePattern : MonoBehaviour
@@ -14,11 +13,6 @@ public class WheelRotatePattern : MonoBehaviour
     private SkillData skillData;
     private ProjectileMove projectileMove;
     private ProjectileRotate projectileRotate;
-
-    private void Awake()
-    {
-
-    }
 
     private void Start()
     {

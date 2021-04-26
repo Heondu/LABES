@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class FloatingDamage : MonoBehaviour
 {
-    private float moveSpeed = 2f;
+    private float moveSpeed = 1f;
     private float alphaSpeed = 2f;
     private float destroyTime = 2f;
     private Text text;

@@ -2,8 +2,21 @@
 
 public class PlayerInput : MonoBehaviour
 {
+    public bool isUIActive = false;
+
+    private void Start()
+    {
+        FindObjectOfType<UIManager>().onUIActive.AddListener(IsUIActive);
+    }
+
+    private void IsUIActive(bool value)
+    {
+        isUIActive = value;
+    }
+
     public int GetSkillIndex()
     {
+        if (isUIActive) return -1;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill1])) return 0;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill2])) return 1;
         if (Input.GetKey(KeySetting.keys[KeyAction.skill3])) return 2;
@@ -13,6 +26,7 @@ public class PlayerInput : MonoBehaviour
 
     public int GetItemIndex()
     {
+        if (isUIActive) return -1;
         if (Input.GetKey(KeySetting.keys[KeyAction.item1])) return 4;
         if (Input.GetKey(KeySetting.keys[KeyAction.item2])) return 5;
         if (Input.GetKey(KeySetting.keys[KeyAction.item3])) return 6;
