@@ -49,9 +49,12 @@ public class ItemGenerator : MonoBehaviour
         itemList.Clear();
         foreach(string key in itemDB.Keys)
         {
-            if (rarityMin <= itemDB[key].rarity &&
-                rarityMax >= itemDB[key].rarity)
-                itemList.Add(itemDB[key]);
+            if (rarityMin <= itemDB[key].rarity && rarityMax >= itemDB[key].rarity)
+            {
+                Item item = new Item();
+                item.DeepCopy(itemDB[key]);
+                itemList.Add(item);
+            }
         }
     }
 

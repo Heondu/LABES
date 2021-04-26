@@ -126,6 +126,20 @@ public class Popup : MonoBehaviour
         isEquipText.text = slot.isEquip == true ? "ÀåÂøÁß" : "¹ÌÂø¿ë";
         equipButtonText.text = slot.isEquip == true ? "ÀåÂø ÇØÁ¦" : "ÀåÂø";
         name.text = DataManager.Localization(slot.item.name);
+        StatusList relatedStatus = Resources.Load<GameObject>("Prefabs/Skills/" + slot.item.skill.name).GetComponent<SkillData>().GetRelatedStatus;
+        if (relatedStatus != StatusList.none)
+        {
+            mainStatText.text = DataManager.Localization(relatedStatus.ToString());
+            if (relatedStatus == StatusList.damage)
+                mainStatValue.text = Mathf.RoundToInt(player.GetStatus(relatedStatus).Value * ((float)slot.item.skill.amount / 100) + player.GetStatus("fixDamage").Value).ToString();
+            else mainStatValue.text = Mathf.RoundToInt(player.GetStatus(relatedStatus).Value * ((float)slot.item.skill.amount / 100)).ToString();
+        }
+        else
+        {
+            string status = Resources.Load<GameObject>("Prefabs/Skills/" + slot.item.skill.name).GetComponent<SkillData>().GetStatus.ToString();
+            mainStatText.text = DataManager.Localization(status);
+            mainStatValue.text = slot.item.skill.amount.ToString();
+        }
     }
 
     private void OnDisable()

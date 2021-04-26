@@ -25,6 +25,8 @@ public class Player : MonoBehaviour, ILivingEntity
 
     private void Update()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+
         animationController.Movement(playerInput.GetAxis());
         if (!IsMove()) movement.Execute(playerInput.GetAxis(), moveSpeed);
 

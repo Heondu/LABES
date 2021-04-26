@@ -23,4 +23,19 @@ public class Item
     public int quality = 0;
     public bool isNew = true;
     public Skill skill;
+
+    public void DeepCopy(Item item)
+    {
+        name = item.name;
+        spawnable = item.spawnable;
+        useType = item.useType;
+        type = item.type;
+        status = item.status;
+        rarity = item.rarity;
+        statMin = item.statMin;
+        statMax = item.statMax;
+        cost = item.cost;
+        itemImage = item.itemImage;
+        inventoryImage = item.inventoryImage;
+    }
 }

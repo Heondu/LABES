@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class FloatingDamage : MonoBehaviour
 {
     private float moveSpeed = 1f;
-    private float alphaSpeed = 2f;
-    private float destroyTime = 2f;
+    private float alphaSpeed = 3f;
+    private float destroyTime = 3f;
     private Text text;
     private Color alpha = Color.white;
     private Vector3 originPos;

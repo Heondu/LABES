@@ -39883,12 +39883,12 @@ MonoBehaviour:
   - {fileID: 1504700904}
   - {fileID: 658095258}
   equipButtonText: {fileID: 1593104208}
-  normalColor: {r: 0.4862745, g: 0.4862745, b: 0.4862745, a: 1}
-  hiQualityColor: {r: 0.28627452, g: 0.45882353, b: 0.6784314, a: 1}
-  magicColor: {r: 0.17254902, g: 0.42352942, b: 0.34901962, a: 1}
-  rareColor: {r: 0.5529412, g: 0.41568628, b: 0.30588236, a: 1}
-  uniqueColor: {r: 0.42352942, g: 0.22352941, b: 0.21176471, a: 1}
-  legendaryColor: {r: 0.3882353, g: 0.20784314, b: 0.50980395, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hiQualityColor: {r: 0.2946778, g: 0.52200073, b: 0.8113208, a: 1}
+  magicColor: {r: 0.24870951, g: 0.6509434, b: 0.5315302, a: 1}
+  rareColor: {r: 0.764151, g: 0.50582945, b: 0.2991723, a: 1}
+  uniqueColor: {r: 0.735849, g: 0.31324673, b: 0.2880918, a: 1}
+  legendaryColor: {r: 0.5457013, g: 0.2775454, b: 0.7264151, a: 1}
 --- !u!1001 &772264525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45550,7 +45550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -113.41002, y: 162}
+  m_AnchoredPosition: {x: -113.41, y: 162}
   m_SizeDelta: {x: 113.41, y: 2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &866845895
@@ -80046,7 +80046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.49991, y: -495.10318}
+  m_AnchoredPosition: {x: 62.49991, y: -495.10315}
   m_SizeDelta: {x: 124.99982, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486171176
@@ -87656,6 +87656,9 @@ MonoBehaviour:
   - {fileID: 399033758}
   - {fileID: 2036037353}
   - {fileID: 1498282865}
+  onUIActive:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1615862147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118788,7 +118791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -113.41002, y: 162}
+  m_AnchoredPosition: {x: -113.41, y: 162}
   m_SizeDelta: {x: 113.41, y: 2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2067927924
@@ -121578,6 +121581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9594b40dcbf5a741b97c054461f7793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUIActive: 0
 --- !u!114 &2106950351
 MonoBehaviour:
   m_ObjectHideFlags: 0
