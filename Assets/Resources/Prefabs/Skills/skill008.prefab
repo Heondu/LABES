@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5095676933925668767}
   - component: {fileID: 7145388412222777796}
   - component: {fileID: 3635092731971018752}
+  - component: {fileID: 3690786753921872536}
   m_Layer: 0
   m_Name: Projectile (6)
   m_TagString: Untagged
@@ -135,6 +136,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &5095676933925668767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &7145388412222777796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +178,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &3690786753921872536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434439460428700741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2753148243142275635
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +212,7 @@ GameObject:
   - component: {fileID: 4005429294484837316}
   - component: {fileID: 4831413790414747634}
   - component: {fileID: 2086579526013577144}
+  - component: {fileID: 2566582183744219370}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -313,6 +332,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4005429294484837316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,8 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &4831413790414747634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +374,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &2566582183744219370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753148243142275635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2855936392139387886
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +408,7 @@ GameObject:
   - component: {fileID: 7310482285435357769}
   - component: {fileID: 650401693975493802}
   - component: {fileID: 1830378237802386807}
+  - component: {fileID: 5086728246345619978}
   m_Layer: 0
   m_Name: Projectile (4)
   m_TagString: Untagged
@@ -491,6 +528,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7310482285435357769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &650401693975493802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +570,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &5086728246345619978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855936392139387886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3894151275717608149
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +604,7 @@ GameObject:
   - component: {fileID: 4271106438825521680}
   - component: {fileID: 8482016510224290443}
   - component: {fileID: 4729122189595199898}
+  - component: {fileID: 1624674063286110103}
   m_Layer: 0
   m_Name: Projectile (7)
   m_TagString: Untagged
@@ -669,6 +724,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4271106438825521680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,8 +737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &8482016510224290443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +766,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &1624674063286110103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894151275717608149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5380045516378483822
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +800,7 @@ GameObject:
   - component: {fileID: 603299075051685777}
   - component: {fileID: 3832616165937859983}
   - component: {fileID: 7084641322918837128}
+  - component: {fileID: 6131629508345741209}
   m_Layer: 0
   m_Name: Projectile (3)
   m_TagString: Untagged
@@ -847,6 +920,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &603299075051685777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,8 +933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &3832616165937859983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,6 +962,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &6131629508345741209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380045516378483822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5982428376946813640
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +995,7 @@ GameObject:
   - component: {fileID: 4872369477157543599}
   - component: {fileID: 3179679357996401661}
   - component: {fileID: 1931976719891800408}
+  - component: {fileID: -9180532675854933457}
   m_Layer: 0
   m_Name: skill008
   m_TagString: Untagged
@@ -964,6 +1055,8 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!114 &606240193533988672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,7 +1107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills: []
 --- !u!114 &1931976719891800408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,6 +1121,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 300
   repeat: 1
+--- !u!114 &-9180532675854933457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982428376946813640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7809579069360370130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1155,7 @@ GameObject:
   - component: {fileID: 8279610284516069136}
   - component: {fileID: 3210465700502001743}
   - component: {fileID: 5810073790742836063}
+  - component: {fileID: 448784489529684936}
   m_Layer: 0
   m_Name: Projectile (2)
   m_TagString: Untagged
@@ -1164,6 +1275,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &8279610284516069136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,8 +1288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &3210465700502001743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1317,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &448784489529684936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809579069360370130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8715490173447874871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1351,7 @@ GameObject:
   - component: {fileID: 7506717455311105322}
   - component: {fileID: 8117602592507205793}
   - component: {fileID: 1288705928845620222}
+  - component: {fileID: 7257494427387705470}
   m_Layer: 0
   m_Name: Projectile (1)
   m_TagString: Untagged
@@ -1342,6 +1471,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7506717455311105322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,8 +1484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &8117602592507205793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,6 +1513,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &7257494427387705470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715490173447874871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9174686307422580343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1547,7 @@ GameObject:
   - component: {fileID: 7284357188616650195}
   - component: {fileID: 4520766394204460664}
   - component: {fileID: 6013032387590609348}
+  - component: {fileID: 6555476406927096638}
   m_Layer: 0
   m_Name: Projectile (5)
   m_TagString: Untagged
@@ -1520,6 +1667,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7284357188616650195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,8 +1680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!114 &4520766394204460664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,3 +1709,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0
   repeat: 0
+--- !u!114 &6555476406927096638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174686307422580343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []

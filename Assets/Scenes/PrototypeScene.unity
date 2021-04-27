@@ -25976,6 +25976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  range: 4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -44136,6 +44137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4abb10519a5164ea0a54d6a257a7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regenTime: 10
 --- !u!4 &841098439
 Transform:
   m_ObjectHideFlags: 0
@@ -112088,6 +112090,7 @@ GameObject:
   - component: {fileID: 1962377201}
   - component: {fileID: 1962377200}
   - component: {fileID: 1962377202}
+  - component: {fileID: 1962377203}
   m_Layer: 0
   m_Name: RegenArea
   m_TagString: RegenArea
@@ -112115,7 +112118,6 @@ MonoBehaviour:
   - {fileID: 2374486982251094785, guid: e09a9509f0c9d4149838104f0035515c, type: 3}
   - {fileID: 5664032998845798469, guid: 4a24c9401b9f54d4ca0277b7db8a04e4, type: 3}
   prob: 01000000010000000100000001000000
-  eliteSpawnPer: 10
 --- !u!4 &1962377201
 Transform:
   m_ObjectHideFlags: 0
@@ -112140,6 +112142,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d17b814002840514aa998736fe081e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1962377203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962377199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea6cd3c9c1e5c6439aad72611a2b5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1962757313

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1190231956927374954}
   - component: {fileID: -8350701622017667061}
   - component: {fileID: 2893695376510359576}
-  - component: {fileID: 5068702069166854105}
   - component: {fileID: 1489342695417335465}
   - component: {fileID: 3898855002144935179}
+  - component: {fileID: 6886213189680745932}
+  - component: {fileID: 1921463700960747222}
   m_Layer: 0
   m_Name: skill001
   m_TagString: Untagged
@@ -135,20 +136,8 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
---- !u!114 &5068702069166854105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337871619095031342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!114 &1489342695417335465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +166,33 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   speed: 1
   useSkillSpeed: 1
+--- !u!114 &6886213189680745932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337871619095031342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1921463700960747222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337871619095031342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

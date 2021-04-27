@@ -20,7 +20,7 @@ public class FloatingDamageManager : MonoBehaviour
 
     public void FloatingDamage(GameObject executor, string damage, Vector3 position, DamageType damageType)
     {
-        GameObject clone = Instantiate(damagePrefab[(int)damageType], canvas);
+        GameObject clone = Instantiate(damagePrefab[(int)damageType], position, Quaternion.identity, canvas);
         clone.GetComponent<FloatingDamage>().Init(executor, damage, position);
 
         if (damageList.ContainsKey(executor) == false)
@@ -33,10 +33,10 @@ public class FloatingDamageManager : MonoBehaviour
         {
             if (i > 0 && damageList[executor][i - 1] != null && damageList[executor][i] != null)
             {
-                float distance = Mathf.Abs(damageList[executor][i- 1].transform.localPosition.y - damageList[executor][i].transform.localPosition.y);
+                float distance = Mathf.Abs(damageList[executor][i - 1].transform.localPosition.y - damageList[executor][i].transform.localPosition.y);
                 float sizeY = damageList[executor][i].GetComponent<RectTransform>().sizeDelta.y;
-                float prevDamagePos = damageList[executor][i].transform.localPosition.y;
-                float newPos = Mathf.Max(0, (prevDamagePos + (sizeY - distance)) / (100 * damageList[executor].Count));
+                float newPos = (sizeY - distance) / damageList[executor].Count;
+                newPos = Mathf.Max(0, newPos);
                 damageList[executor][i - 1].SetPos(newPos);
             }
         }

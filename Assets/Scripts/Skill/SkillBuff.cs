@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SkillData))]
+[RequireComponent(typeof(SkillEffectTrigger))]
 public class SkillBuff : MonoBehaviour
 {
     [SerializeField]
@@ -12,6 +13,7 @@ public class SkillBuff : MonoBehaviour
     protected GameObject buffPrefab;
     protected SkillData skillData;
     protected SkillLifetime skillLifetime;
+    protected SkillEffectTrigger skillEffectTrigger;
 
     protected virtual void Awake()
     {
@@ -20,10 +22,13 @@ public class SkillBuff : MonoBehaviour
         skillData = GetComponent<SkillData>();
         skillLifetime = GetComponent<SkillLifetime>();
         buffPrefab = Resources.Load<GameObject>("Prefabs/UI/Buff");
+        skillEffectTrigger = GetComponent<SkillEffectTrigger>();
     }
 
     protected virtual void Start()
     {
+        skillEffectTrigger.onStart.Invoke();
+
         Transform buff = buffHolder.Find(gameObject.name);
         if (buff != null)
         {
@@ -55,12 +60,25 @@ public class SkillBuff : MonoBehaviour
             entityList.Add(targetEntity);
             for (int i = 0; i < skill.repeat; i++)
             {
+                CreateNextSkill();
+
+                skillEffectTrigger.SetTarget(target.transform);
+                skillEffectTrigger.onHit.Invoke();
+
                 StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
             }
         }
 
         GameObject clone = Instantiate(buffPrefab, buffUIHolder);
         clone.GetComponent<UIBuffLifetimeViewer>().Init(skill, skillLifetime);
+    }
+
+    private void CreateNextSkill()
+    {
+        for (int i = 0; i < skillData.nextSkills.Length; i++)
+        {
+            SkillLoader.instance.LoadSkill(skillData, skillData.nextSkills[i], transform.position, transform.up);
+        }
     }
 
     protected List<GameObject> FindAllTarget(float radius)

@@ -7,11 +7,4 @@ public class RegenArea : MonoBehaviour
 
     public GameObject[] monsters;
     public int[] prob;
-
-    public float eliteSpawnPer;
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(position, 0.5f);
-    }
 }

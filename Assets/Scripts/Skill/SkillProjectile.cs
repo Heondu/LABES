@@ -2,23 +2,27 @@
 
 [RequireComponent(typeof(SkillData))]
 [RequireComponent(typeof(ProjectileMove))]
+[RequireComponent(typeof(SkillEffectTrigger))]
 public class SkillProjectile : MonoBehaviour
 {
     protected GameObject target;
     protected int penetrationCount = 0;
     protected SkillData skillData;
     protected ProjectileMove projectileMove;
-    [SerializeField]
-    protected string[] nextSkills;
+    protected SkillEffectTrigger skillEffectTrigger;
+
 
     protected virtual void Awake()
     {
         skillData = GetComponent<SkillData>();
         projectileMove = GetComponent<ProjectileMove>();
+        skillEffectTrigger = GetComponent<SkillEffectTrigger>();
     }
 
     protected virtual void Start()
     {
+        skillEffectTrigger.onStart.Invoke();
+
         projectileMove.SetSpeed(skillData.speed);
     }
 
@@ -29,15 +33,14 @@ public class SkillProjectile : MonoBehaviour
 
     protected virtual void Execute()
     {
-        for (int i = 0; i < nextSkills.Length; i++)
-        {
-            SkillLoader.instance.LoadSkill(skillData, DataManager.skillDB[nextSkills[i]], transform.position, transform.up);
-        }
+        CreateNextSkill();
+    }
 
-        penetrationCount++;
-        if (penetrationCount >= skillData.penetration)
+    private void CreateNextSkill()
+    {
+        for (int i = 0; i < skillData.nextSkills.Length; i++)
         {
-            Destroy(gameObject);
+            SkillLoader.instance.LoadSkill(skillData, skillData.nextSkills[i], transform.position, transform.up);
         }
     }
 
@@ -45,7 +48,16 @@ public class SkillProjectile : MonoBehaviour
     {
         if (collision.CompareTag(skillData.targetTag))
         {
+            skillEffectTrigger.SetTarget(collision.transform);
+            skillEffectTrigger.onHit.Invoke();
+
             Execute();
+
+            penetrationCount++;
+            if (penetrationCount >= skillData.penetration)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

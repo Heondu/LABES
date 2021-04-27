@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3806413292710300442}
   - component: {fileID: -3884331586363667637}
   - component: {fileID: 3972150725610075080}
+  - component: {fileID: 679550929011399352}
   m_Layer: 0
   m_Name: skill900
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 1
   relatedStatus: 0
+  attackNum: 1
 --- !u!114 &-3884331586363667637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,3 +76,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8b863abe36f8247a0a8453a05cc678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  delay: 1
+  singleTarget: 0
+--- !u!114 &679550929011399352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912355541753963644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}

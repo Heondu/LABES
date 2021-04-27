@@ -10,6 +10,10 @@ public class LazyCamera : MonoBehaviour
     private float smoothTime = 0.3f;
     private float originSize;
     private bool isShake = false;
+    private Camera cam;
+
+    [SerializeField]
+    private float range = 4;
 
     private void Awake()
     {
@@ -20,7 +24,7 @@ public class LazyCamera : MonoBehaviour
         {
             target = GameObject.Find("Player").transform;
         }
-
+        cam = GetComponent<Camera>();
         originSize = Camera.main.orthographicSize;
     }
 
@@ -29,10 +33,22 @@ public class LazyCamera : MonoBehaviour
         UpdateCamera();
     }
 
+    /// <summary>
+    /// 마우스와 플레이어 사이 중간점 구하기
+    /// </summary>
+    Vector3 MiddleOfMouseAndPlayer
+    {
+        get
+        {
+            Vector3 v3 = cam.ScreenToWorldPoint(Input.mousePosition);
+            v3 = new Vector3((target.position.x + v3.x) / 2, (target.position.y + v3.y) / 2, -10);
+            return new Vector3(Mathf.Clamp(v3.x, target.position.x - range, target.position.x + range), Mathf.Clamp(v3.y, target.position.y - range, target.position.y + range), target.position.z - 300);
+        }
+    }
+
     private void UpdateCamera()
     {
-        Vector3 destination = new Vector3(target.position.x, target.position.y + 0.5f, transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, MiddleOfMouseAndPlayer, ref velocity, smoothTime);
     }
 
     public IEnumerator Shake(float amount, float duration)

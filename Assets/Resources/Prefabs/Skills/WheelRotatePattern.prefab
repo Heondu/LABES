@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7335782004590770491}
   - component: {fileID: 3538217379565466085}
   - component: {fileID: 8804381837512070215}
+  - component: {fileID: 411302501223395719}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Untagged
@@ -176,8 +177,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &411302501223395719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184469546315973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469766741617
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +213,7 @@ GameObject:
   - component: {fileID: 3828841045314282002}
   - component: {fileID: 6142524428592360116}
   - component: {fileID: 4150355576289466731}
+  - component: {fileID: 6440847888833272024}
   m_Layer: 0
   m_Name: Circle (7)
   m_TagString: Untagged
@@ -354,8 +374,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6440847888833272024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184469766741617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469843352030
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +410,7 @@ GameObject:
   - component: {fileID: 8199180099434360739}
   - component: {fileID: 8113025340189514857}
   - component: {fileID: 4727724069065439078}
+  - component: {fileID: 1694203492916425767}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Untagged
@@ -532,8 +571,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1694203492916425767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184469843352030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469853645010
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,8 +606,9 @@ GameObject:
   - component: {fileID: -2551209060493527280}
   - component: {fileID: -7997130523535061278}
   - component: {fileID: -959575612510175423}
+  - component: {fileID: 642115440492567185}
   m_Layer: 0
-  m_Name: skill001
+  m_Name: WheelRotatePattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills: []
 --- !u!114 &-959575612510175423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +730,25 @@ MonoBehaviour:
   - {fileID: 295184470644187727}
   angle: 0
   distance: 1.5
+--- !u!114 &642115440492567185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184469853645010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills: []
 --- !u!1 &295184470030956630
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +765,7 @@ GameObject:
   - component: {fileID: 1182894142764382029}
   - component: {fileID: 8579285912756904807}
   - component: {fileID: 7317003468968600243}
+  - component: {fileID: 9161742949034847268}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Untagged
@@ -849,8 +926,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9161742949034847268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184470030956630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470295605462
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +962,7 @@ GameObject:
   - component: {fileID: 5325015395177519292}
   - component: {fileID: 1802432503375326486}
   - component: {fileID: 774977408592112665}
+  - component: {fileID: 8861379861342204158}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -1027,8 +1123,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8861379861342204158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184470295605462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470348256612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1159,7 @@ GameObject:
   - component: {fileID: 6630214467660229450}
   - component: {fileID: 7053183812609193494}
   - component: {fileID: 4209164927308960635}
+  - component: {fileID: 4956688027943531647}
   m_Layer: 0
   m_Name: Circle (5)
   m_TagString: Untagged
@@ -1205,8 +1320,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4956688027943531647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184470348256612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470644187727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1356,7 @@ GameObject:
   - component: {fileID: 8384434734802496194}
   - component: {fileID: 6429895052036937680}
   - component: {fileID: 343264981897418431}
+  - component: {fileID: 8443220572606808749}
   m_Layer: 0
   m_Name: Circle (8)
   m_TagString: Untagged
@@ -1383,8 +1517,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8443220572606808749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184470644187727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184471320130312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1553,7 @@ GameObject:
   - component: {fileID: 2195010567892563079}
   - component: {fileID: 4906425492358364659}
   - component: {fileID: 3684428706583408442}
+  - component: {fileID: 3277117675577401784}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Untagged
@@ -1561,5 +1714,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3277117675577401784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295184471320130312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   nextSkills:
-  - skill002
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}

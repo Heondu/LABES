@@ -12,6 +12,7 @@ public class EnemyAttack : MonoBehaviour
     public Dictionary<Skill, Timer> skillCool = new Dictionary<Skill, Timer>();
     private Transform player;
     private Enemy enemy;
+    private int sumOfProb = 0;
 
     private void Awake()
     {
@@ -29,13 +30,10 @@ public class EnemyAttack : MonoBehaviour
 
     public void Execute(float delay)
     {
-        Skill skill = null;
-        int num = Random.Range(0, 101);
-        for (int i = 0; i < probList.Count; i++)
-        {
-            if (num < probList[i]) skill = skillList[i];
-        }
+        Skill skill = SelectRandomSkill();
+
         if (!IsAttack(skill)) return;
+
         SkillLoader.instance.LoadSkill(gameObject, enemy.status, "Player", skill, transform.position, (player.position - transform.position).normalized);
         isCool = true;
         isSkillCool[skill] = true;
@@ -76,7 +74,10 @@ public class EnemyAttack : MonoBehaviour
             }
         }
 
-        SkillSort();
+        for (int i = 0; i < probList.Count; i++)
+        {
+            sumOfProb += probList[i];
+        }
     }
 
     private void SkillSort()
@@ -96,5 +97,23 @@ public class EnemyAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+    private Skill SelectRandomSkill()
+    {
+        int rand = Random.Range(0, sumOfProb);
+        int sum = 0;
+        int index = 0;
+        for (int i = 0; i < probList.Count; i++)
+        {
+            sum += probList[i];
+            if (rand < sum)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        return skillList[index];
     }
 }

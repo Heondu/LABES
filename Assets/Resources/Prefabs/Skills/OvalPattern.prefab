@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4164486417066115500}
   - component: {fileID: 5647511513236763611}
   - component: {fileID: 4244774771253301976}
+  - component: {fileID: 8580168317237545556}
   m_Layer: 0
   m_Name: Circle (13)
   m_TagString: Untagged
@@ -171,8 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &4244774771253301976
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -189,6 +188,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8580168317237545556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950109307779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950188853608
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +225,7 @@ GameObject:
   - component: {fileID: 5790866501347825330}
   - component: {fileID: 4712029631866550926}
   - component: {fileID: 3179453889395809638}
+  - component: {fileID: 7979782809520627612}
   m_Layer: 0
   m_Name: Circle (7)
   m_TagString: Untagged
@@ -360,8 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &3179453889395809638
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -378,6 +396,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7979782809520627612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950188853608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950339476744
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +432,7 @@ GameObject:
   - component: {fileID: 2421068394106721819}
   - component: {fileID: 1811673496926900303}
   - component: {fileID: 4646789561337981443}
+  - component: {fileID: 7384869649332119650}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -536,8 +575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &4646789561337981443
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -554,6 +591,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7384869649332119650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950339476744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950407528325
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +627,7 @@ GameObject:
   - component: {fileID: 4688469897514395327}
   - component: {fileID: 3598348591896342046}
   - component: {fileID: 5612233509169681889}
+  - component: {fileID: 1878741113282786860}
   m_Layer: 0
   m_Name: Circle (18)
   m_TagString: Untagged
@@ -712,8 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &5612233509169681889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -730,6 +786,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1878741113282786860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950407528325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950472243362
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +822,7 @@ GameObject:
   - component: {fileID: 7134816185406608676}
   - component: {fileID: 4132026008850193501}
   - component: {fileID: 7601564723748776119}
+  - component: {fileID: 5926949342044917778}
   m_Layer: 0
   m_Name: Circle (19)
   m_TagString: Untagged
@@ -888,8 +965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &7601564723748776119
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -906,6 +981,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5926949342044917778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950472243362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950736212774
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +1013,7 @@ GameObject:
   - component: {fileID: 4003649877585385619}
   - component: {fileID: 4448244658832242582}
   m_Layer: 0
-  m_Name: skill001
+  m_Name: OvalPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,6 +1099,7 @@ GameObject:
   - component: {fileID: 106475592178917324}
   - component: {fileID: 1292704174192601667}
   - component: {fileID: 3972013343042582767}
+  - component: {fileID: 7497661104427550494}
   m_Layer: 0
   m_Name: Circle (11)
   m_TagString: Untagged
@@ -1146,8 +1242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &3972013343042582767
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1164,6 +1258,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7497661104427550494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539950756880121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951011565649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1294,7 @@ GameObject:
   - component: {fileID: 5841831536545989126}
   - component: {fileID: 9039430875708102918}
   - component: {fileID: 8535281028450308199}
+  - component: {fileID: 57870933889324822}
   m_Layer: 0
   m_Name: Circle (14)
   m_TagString: Untagged
@@ -1322,8 +1437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &8535281028450308199
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1340,6 +1453,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &57870933889324822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951011565649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951038257030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1490,7 @@ GameObject:
   - component: {fileID: 4604053353753530982}
   - component: {fileID: 377301691197035959}
   - component: {fileID: 7298453033146153876}
+  - component: {fileID: 3020295563873203681}
   m_Layer: 0
   m_Name: Circle (17)
   m_TagString: Untagged
@@ -1511,8 +1645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &7298453033146153876
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1529,6 +1661,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3020295563873203681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951038257030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951088141651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1697,7 @@ GameObject:
   - component: {fileID: 8664309686106659157}
   - component: {fileID: 5634600057385629182}
   - component: {fileID: 2050939926937630590}
+  - component: {fileID: 4175190028266443450}
   m_Layer: 0
   m_Name: Circle (16)
   m_TagString: Untagged
@@ -1687,8 +1840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &2050939926937630590
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1705,6 +1856,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4175190028266443450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951088141651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951154778889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1893,7 @@ GameObject:
   - component: {fileID: 8529681690298638818}
   - component: {fileID: 3818179614128027891}
   - component: {fileID: 5788450274074682344}
+  - component: {fileID: 7643488328632094226}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Untagged
@@ -1876,8 +2048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &5788450274074682344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1894,6 +2064,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7643488328632094226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951154778889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951178759297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +2100,7 @@ GameObject:
   - component: {fileID: 7759968687424672930}
   - component: {fileID: 4484549335824890326}
   - component: {fileID: 726328766371347941}
+  - component: {fileID: 54948026288809611}
   m_Layer: 0
   m_Name: Circle (10)
   m_TagString: Untagged
@@ -2052,8 +2243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &726328766371347941
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2070,6 +2259,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &54948026288809611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951178759297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951524094328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2295,7 @@ GameObject:
   - component: {fileID: 8588003611000347161}
   - component: {fileID: 37936793340885645}
   - component: {fileID: 6791904395088783957}
+  - component: {fileID: 2334017355446407768}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Untagged
@@ -2228,8 +2438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &6791904395088783957
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2246,6 +2454,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2334017355446407768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951524094328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951533746352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2490,7 @@ GameObject:
   - component: {fileID: 5686413288272310488}
   - component: {fileID: 6340415126285458456}
   - component: {fileID: 6535229407384037700}
+  - component: {fileID: 4762874299282182905}
   m_Layer: 0
   m_Name: Circle (8)
   m_TagString: Untagged
@@ -2404,8 +2633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &6535229407384037700
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2422,6 +2649,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4762874299282182905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951533746352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951605574324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,6 +2685,7 @@ GameObject:
   - component: {fileID: 1666049969072240396}
   - component: {fileID: 3679454875911564556}
   - component: {fileID: 7644444204303897650}
+  - component: {fileID: 5640511888195834128}
   m_Layer: 0
   m_Name: Circle (12)
   m_TagString: Untagged
@@ -2580,8 +2828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &7644444204303897650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2598,6 +2844,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5640511888195834128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951605574324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951626947273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,6 +2880,7 @@ GameObject:
   - component: {fileID: 5593443325372613881}
   - component: {fileID: 4539452675868908170}
   - component: {fileID: 7397456630448685058}
+  - component: {fileID: 8032368219308385013}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Untagged
@@ -2756,8 +3023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &7397456630448685058
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2774,6 +3039,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8032368219308385013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951626947273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951701930927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,6 +3075,7 @@ GameObject:
   - component: {fileID: 2134274567066309237}
   - component: {fileID: 7465990542948178266}
   - component: {fileID: 7474078416546745733}
+  - component: {fileID: 3005319020088571185}
   m_Layer: 0
   m_Name: Circle (15)
   m_TagString: Untagged
@@ -2932,8 +3218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &7474078416546745733
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2950,6 +3234,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3005319020088571185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951701930927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951742193807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +3270,7 @@ GameObject:
   - component: {fileID: 6564712563612670587}
   - component: {fileID: 7904495975569798430}
   - component: {fileID: 3986099660303271774}
+  - component: {fileID: 6094492923445485006}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Untagged
@@ -3108,8 +3413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &3986099660303271774
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3126,6 +3429,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6094492923445485006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951742193807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951961570915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,6 +3465,7 @@ GameObject:
   - component: {fileID: 8915756096189878621}
   - component: {fileID: 9081590380251476140}
   - component: {fileID: 685239983301544601}
+  - component: {fileID: 4584791539000445386}
   m_Layer: 0
   m_Name: Circle (9)
   m_TagString: Untagged
@@ -3284,8 +3608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &685239983301544601
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3302,6 +3624,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4584791539000445386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539951961570915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539952000329732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,6 +3660,7 @@ GameObject:
   - component: {fileID: 8507997603787957884}
   - component: {fileID: 7638962475760747343}
   - component: {fileID: 1722997115604083051}
+  - component: {fileID: 6499756519546210171}
   m_Layer: 0
   m_Name: Circle (5)
   m_TagString: Untagged
@@ -3460,8 +3803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &1722997115604083051
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3478,6 +3819,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6499756519546210171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539952000329732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539952172941222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,6 +3855,7 @@ GameObject:
   - component: {fileID: 513659927059268433}
   - component: {fileID: 8422946612969427217}
   - component: {fileID: 8965034127282616393}
+  - component: {fileID: 3491249896921649116}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -3636,8 +3998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed03b56c7d08c94d85931d895733aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSkills:
-  - skill002
 --- !u!58 &8965034127282616393
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3654,3 +4014,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3491249896921649116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219539952172941222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f413644c7567842a85dab30ae00e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  nextSkills:
+  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}

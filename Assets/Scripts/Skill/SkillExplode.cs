@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SkillData))]
+[RequireComponent(typeof(SkillEffectTrigger))]
 public class SkillExplode : MonoBehaviour
 {
     [SerializeField]
@@ -13,14 +14,18 @@ public class SkillExplode : MonoBehaviour
     protected bool singleTarget;
     protected int penetrationCount = 0;
     protected SkillData skillData;
+    protected SkillEffectTrigger skillEffectTrigger;
 
     protected virtual void Awake()
     {
         skillData = GetComponent<SkillData>();
+        skillEffectTrigger = GetComponent<SkillEffectTrigger>();
     }
 
     protected virtual void Start()
     {
+        skillEffectTrigger.onStart.Invoke();
+
         StartCoroutine(CoExecute());
     }
 
@@ -52,6 +57,11 @@ public class SkillExplode : MonoBehaviour
             ILivingEntity targetEntity = target.GetComponent<ILivingEntity>();
             for (int i = 0; i < skillData.AttackNum; i++)
             {
+                CreateNextSkill();
+
+                skillEffectTrigger.SetTarget(target.transform);
+                skillEffectTrigger.onHit.Invoke();
+
                 StatusCalculator.CalcSkillStatus(skillData.executorStatus, targetEntity, skill, skillData.GetStatus, skillData.GetRelatedStatus);
             }
             penetrationCount++;
@@ -59,6 +69,14 @@ public class SkillExplode : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void CreateNextSkill()
+    {
+        for (int i = 0; i < skillData.nextSkills.Length; i++)
+        {
+            SkillLoader.instance.LoadSkill(skillData, skillData.nextSkills[i], transform.position, transform.up);
         }
     }
 

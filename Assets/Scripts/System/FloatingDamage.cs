@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class FloatingDamage : MonoBehaviour
 {
     private float moveSpeed = 1f;
-    private float alphaSpeed = 3f;
+    private float fadeOutTime = 1f;
     private float destroyTime = 3f;
+    private float distance = 50f;
     private Text text;
     private Color alpha = Color.white;
     private Vector3 originPos;
@@ -38,20 +39,22 @@ public class FloatingDamage : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
+        yield return new WaitForSeconds(destroyTime - fadeOutTime);
+
         float percent = 0;
         while (percent < 1)
         {
             alpha.a = Mathf.Lerp(alpha.a, 0, percent);
             text.color = alpha;
 
-            percent += Time.deltaTime / alphaSpeed;
+            percent += Time.deltaTime / fadeOutTime;
             yield return null;
         }
     }
 
     public void SetPos(float moveValue)
     {
-        offset += Vector3.up * moveValue;
+        offset += Vector3.up * (moveValue / distance);
     }
 
     private void OnDestroy()

@@ -22,7 +22,9 @@ public class SkillData : MonoBehaviour
     public float lifetime { get; private set; }
     public int penetration { get; private set; }
 
-    public void Init(GameObject executor, IStatus status, string targetTag, Skill skill)
+    public GameObject[] nextSkills;
+
+    public void Init(GameObject executor, IStatus status, string targetTag, Skill skill, GameObject[] nextSkills)
     {
         this.skill = skill;
         this.executor = executor;
@@ -33,5 +35,15 @@ public class SkillData : MonoBehaviour
         speed = skill.speed;
         lifetime = skill.lifetime;
         penetration = skill.penetration;
+        this.nextSkills = nextSkills;
+    }
+
+    public void InitChild(GameObject executor, IStatus status, string targetTag, Skill skill)
+    {
+        SkillData[] skillDatas = GetComponentsInChildren<SkillData>();
+        for (int i = 0; i < skillDatas.Length; i++)
+        {
+            skillDatas[i].Init(executor, status, targetTag, skill, nextSkills);
+        }
     }
 }

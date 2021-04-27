@@ -19,7 +19,6 @@ public class SkillLifetime : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= lifetime)
         {
-            onDestroy.Invoke();
             Destroy(gameObject);
         }
     }
@@ -27,5 +26,10 @@ public class SkillLifetime : MonoBehaviour
     public void ResetTime()
     {
         currentTime = 0;
+    }
+
+    private void OnDestroy()
+    {
+        onDestroy.Invoke();
     }
 }
