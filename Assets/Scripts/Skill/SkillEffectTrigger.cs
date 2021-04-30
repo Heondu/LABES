@@ -23,8 +23,14 @@ public class SkillEffectTrigger : MonoBehaviour
         Instantiate(obj, target.position, Quaternion.identity, target);
     }
 
+    public void CreateSoundEffect(AudioClip aud)
+    {
+        SoundEffectManager.SoundEffect(aud);
+    }
+
     public void SetTarget(Transform target)
     {
         this.target = target;
     }
+
 }

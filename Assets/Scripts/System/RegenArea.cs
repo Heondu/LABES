@@ -2,9 +2,10 @@
 
 public class RegenArea : MonoBehaviour
 {
-    public Vector2 position;
+    public Transform position;
     public int maxRegenNum;
 
     public GameObject[] monsters;
     public int[] prob;
+
 }

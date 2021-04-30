@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundEffectManager : MonoBehaviour
 {
-    int maxAuds = 10;//한번에 10개의 효과음까지만 재생
+    int maxAuds = 100;//한번에 100개의 효과음까지만 재생
     static SoundEffectManager _soundEffectManager;
     public AudioSource[] soundBar; 
     public static SoundEffectManager soundEffectManager
@@ -34,9 +34,19 @@ public class SoundEffectManager : MonoBehaviour
 
     public static void SoundEffect(string soundName) //이친구를 실제로 호출하여 사용합니다
     {
+        soundEffectManager.SoundPlay(Resources.Load<AudioClip>("Sounds/" + soundName) as AudioClip);
+    }
+
+    public static void SoundEffect(AudioClip ac)
+    {
+        soundEffectManager.SoundPlay(ac);
+    }
+
+    public void SoundPlay(AudioClip ac)
+    {
         int playingAuds = 1; //이 메서드가 실행되면서 최소 1개는 생성될 것이므로 1
         int notplayingAud = 0;
-        for (int i = 0; i< soundEffectManager.soundBar.Length; i++)
+        for (int i = 0; i < soundEffectManager.soundBar.Length; i++)
         {
             if (soundEffectManager.soundBar[i].isPlaying)
             {
@@ -48,12 +58,11 @@ public class SoundEffectManager : MonoBehaviour
             }
         }
         float goVolume = (0.3f + (0.7f / playingAuds)) * SettingsManager.getSE; //플레이되고 있는 효과음의 수에 따라서 음량을 조절함, foreach 안에 넣으면 갯수만큼 반복계산하므로 먼저 계산
-        Debug.Log(goVolume);
-        foreach(AudioSource audioSource in soundEffectManager.soundBar)
+        foreach (AudioSource audioSource in soundEffectManager.soundBar)
         {
-            audioSource.volume = goVolume; 
+            audioSource.volume = goVolume;
         }
-        soundEffectManager.soundBar[notplayingAud].clip = Resources.Load<AudioClip>("Sounds/" + soundName) as AudioClip;
+        soundEffectManager.soundBar[notplayingAud].clip = ac;
         soundEffectManager.soundBar[notplayingAud].Play();
     }
 }

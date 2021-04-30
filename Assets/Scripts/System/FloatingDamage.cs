@@ -6,7 +6,7 @@ public class FloatingDamage : MonoBehaviour
 {
     private float moveSpeed = 1f;
     private float fadeOutTime = 1f;
-    private float destroyTime = 3f;
+    private float destroyTime = 2f;
     private float distance = 50f;
     private Text text;
     private Color alpha = Color.white;

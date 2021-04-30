@@ -16,6 +16,7 @@ public class RegenManager : MonoBehaviour
         {
             Spawn(regen);
         }
+
     }
 
     private void Start()

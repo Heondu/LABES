@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cac72a2aa7b8c43a4729f0246fb770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: mon000_2
   status:
     HP: 0
     maxHP: 0
@@ -572,6 +573,7 @@ MonoBehaviour:
       BaseValue: 0
     reduceCool:
       BaseValue: 0
+  moveSpeed: 3
 --- !u!114 &7986382614788659264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb7e5a52f898224db0e02debbb0891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
 --- !u!114 &-7058719685637627117
 MonoBehaviour:
   m_ObjectHideFlags: 0
