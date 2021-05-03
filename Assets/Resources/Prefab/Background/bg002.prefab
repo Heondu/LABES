@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 5322492644943070264}
   - component: {fileID: 5322492644943070265}
   - component: {fileID: 6828731095186975421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bg002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

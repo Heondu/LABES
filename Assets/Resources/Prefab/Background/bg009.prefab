@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6602946203599623812}
   - component: {fileID: 6602946203599623815}
   - component: {fileID: 880848681172599861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bg009
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,23 +6,29 @@ public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK
 public class EnemyController : MonoBehaviour
 {
     private GameObject target;
+    private EnemyState state = EnemyState.STATE_PATROL;
     private const float FIND_DISTANCE = 8f;
     private const float CAHSE_DISTANCE = 13f;
-    private const float ATTACK_DISTANCE = 8f;
-    private Timer timer = new Timer();
+    private const float ATTACK_DISTANCE = 10f;
+    private const float PATROL_TIME = 1f;
     private Vector3[] patrolDir = { Vector3.right, Vector3.zero, Vector3.down, Vector3.zero,
                                     Vector3.left, Vector3.zero, Vector3.up, Vector3.zero };
+    private Timer timer = new Timer();
     private int currentDirNum = 0;
-    private const float PATROL_TIME = 1f;
     public bool isSwarmAttack = false;
-    private EnemyState state = EnemyState.STATE_PATROL;
     private bool isStop = false;
     private bool canChange = true;
     private float changeCool = 1f;
 
+    private PathFinder pathFinder;
+    private Vector3 moveDir = Vector3.zero;
+
     private void Awake()
     {
         target = FindObjectOfType<Player>().gameObject;
+
+        pathFinder = GetComponent<PathFinder>();
+
         RandSort();
     }
 
@@ -37,42 +43,20 @@ public class EnemyController : MonoBehaviour
 
         if (state == EnemyState.STATE_PATROL)
         {
-            if (Distance() <= FIND_DISTANCE) SetState(EnemyState.STATE_CHASE);
-            if (isSwarmAttack == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance() <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
+            if (Distance() <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_CHASE)
         {
             if (Distance() > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance() <= ATTACK_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance() <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_ATTACK)
         {
             if (Distance() > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance() > ATTACK_DISTANCE) SetState(EnemyState.STATE_CHASE);
+            if (Distance() > ATTACK_DISTANCE || pathFinder.IsEmpty(target) == false) SetState(EnemyState.STATE_CHASE);
         }
     }
-
-    //private bool IsPatrol()
-    //{
-    //    if (isStop) return false;
-    //    if (Distance() > CAHSE_DISTANCE && isSwarmAttack == false) return true;
-    //    return false;
-    //}
-    //
-    //private bool IsChase()
-    //{
-    //    if (isStop) return false;
-    //    if (Distance() <= CAHSE_DISTANCE && IsAttack() == false) return true;
-    //    if (isSwarmAttack == true && IsAttack() == false) return true;
-    //    return false;
-    //}
-    //
-    //private bool IsAttack()
-    //{
-    //    if (isStop) return false;
-    //    if (Distance() <= ATTACK_DISTANCE) return true;
-    //    return false;
-    //}
 
     public Vector3 GetAxis()
     {
@@ -83,10 +67,23 @@ public class EnemyController : MonoBehaviour
             {
                 RandSort();
                 currentDirNum = (currentDirNum + 1) % patrolDir.Length;
+
+                if (pathFinder.IsEmpty(patrolDir[currentDirNum]))
+                {
+                    moveDir = patrolDir[currentDirNum];
+                }
+                else
+                {
+                    moveDir = patrolDir[currentDirNum] * -1;
+                }
             }
-            return patrolDir[currentDirNum];
+            return moveDir;
         }
-        else if (state == EnemyState.STATE_CHASE) return (target.transform.position - transform.position).normalized;
+        else if (state == EnemyState.STATE_CHASE)
+        {
+            moveDir = pathFinder.GetMoveDir(moveDir);
+            return moveDir;
+        }
         return Vector3.zero;
     }
 
@@ -117,7 +114,12 @@ public class EnemyController : MonoBehaviour
         if (canChange)
         {
             this.state = state;
-            StartCoroutine("ChangeCool");
+            StartCoroutine(ChangeCool());
+
+            if (state == EnemyState.STATE_CHASE)
+            {
+                moveDir = (target.transform.position - transform.position).normalized;
+            }
         }
     }
 
