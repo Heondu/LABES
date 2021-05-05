@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private Toggle[] menuToggle;
     public UnityEvent<bool> onUIActive = new UnityEvent<bool>();
     private bool isUIActive = false;
+    public static bool IsStopKeyInput = false;
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (IsStopKeyInput) return;
+
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.status])) menuToggle[0].isOn = !menuToggle[0].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.inventory])) menuToggle[1].isOn = !menuToggle[1].isOn;
         if (Input.GetKeyDown(KeySetting.keys[KeyAction.awaken])) menuToggle[2].isOn = !menuToggle[2].isOn;

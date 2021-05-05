@@ -1,7 +1,17 @@
-﻿using UnityEngine;
-
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public enum UseType { weapon = 0, equipment, skill, consume, rune, equipSlot }
+
+public class InventoryItemData
+{
+    public List<ItemSaveData> items = new List<ItemSaveData>();
+}
+
+public class InventorySkillData
+{
+    public List<SkillSaveData> skills = new List<SkillSaveData>();
+}
 
 public class InventoryManager : MonoBehaviour
 {
@@ -24,6 +34,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     private GameObject draggingObject;
     public Notification notification;
+    public bool itemSave = false;
+    public bool itemLoad = false;
+    public bool skillSave = false;
+    public bool skillLoad = false;
 
     private void Awake()
     {
@@ -31,6 +45,47 @@ public class InventoryManager : MonoBehaviour
         else instance = this;
 
         draggingSlot = draggingObject.GetComponent<SlotDrag>();
+    }
+
+    private void Start()
+    {
+        LoadInventory();
+    }
+
+    private void SaveInventory()
+    {
+        if (itemSave)
+        {
+            inventoryWeapon.SaveInventory();
+            inventoryEquipment.SaveInventory();
+            inventoryConsume.SaveInventory();
+            equipSlotL.SaveInventory();
+            equipSlotR.SaveInventory();
+            consumeSlot.SaveInventory();
+        }
+        if (skillSave)
+        {
+            inventorySkill.SaveInventory();
+            skillSlot.SaveInventory();
+        }
+    }
+
+    private void LoadInventory()
+    {
+        if (itemLoad)
+        {
+            inventoryWeapon.LoadInventory();
+            inventoryEquipment.LoadInventory();
+            inventoryConsume.LoadInventory();
+            equipSlotL.LoadInventory();
+            equipSlotR.LoadInventory();
+            consumeSlot.LoadInventory();
+        }
+        if (skillSave)
+        {
+            inventorySkill.LoadInventory();
+            skillSlot.LoadInventory();
+        }
     }
 
     public void AddItem(Item newItem)
@@ -44,9 +99,12 @@ public class InventoryManager : MonoBehaviour
     
     public void AddSkill(Skill newSkill)
     {
-        inventorySkill.AddSkill(newSkill);
-        notification.Notify(true);
-        notification.IncreaseNum();
+        if (skillLoad == false)
+        {
+            inventorySkill.AddSkill(newSkill);
+            notification.Notify(true);
+            notification.IncreaseNum();
+        }
     }
 
     public void RemoveItem(Item selectedItem)
@@ -54,6 +112,13 @@ public class InventoryManager : MonoBehaviour
         if (selectedItem.useType == "weapon") inventoryWeapon.RemoveItem(selectedItem);
         else if (selectedItem.useType == "equipment") inventoryEquipment.RemoveItem(selectedItem);
         else if (selectedItem.useType == "consume") inventoryConsume.RemoveItem(selectedItem);
+    }
+
+    private void UpdateInventory(Slot slot)
+    {
+        slot.inventory.UpdateInventory();
+
+        SaveInventory();
     }
 
     public void OnBeginDrag(Slot selectedSlot)
@@ -75,7 +140,7 @@ public class InventoryManager : MonoBehaviour
         draggingObject.SetActive(false);
         if (targetSlot == null)
         {
-            selectedSlot.inventory.UpdateInventory();
+            UpdateInventory(selectedSlot);
             return;
         }
 
@@ -85,7 +150,7 @@ public class InventoryManager : MonoBehaviour
             else if (selectedSlot.useType == UseType.equipment && selectedSlot.item.type == targetSlot.equipType) Equip(selectedSlot, targetSlot);
             else if (selectedSlot.useType == UseType.skill && targetSlot.equipType == "skill") Equip(selectedSlot, targetSlot);
             else if (selectedSlot.useType == UseType.consume && targetSlot.equipType == "consume") Equip(selectedSlot, targetSlot);
-            else selectedSlot.inventory.UpdateInventory();
+            else UpdateInventory(selectedSlot);
         }
         else if (selectedSlot.useType == targetSlot.useType)
         {
@@ -93,17 +158,17 @@ public class InventoryManager : MonoBehaviour
             {
                 targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
                 selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
-                selectedSlot.inventory.UpdateInventory();
-                targetSlot.inventory.UpdateInventory();
+                UpdateInventory(selectedSlot);
+                UpdateInventory(targetSlot);
             }
             else
             {
-                selectedSlot.inventory.UpdateInventory();
+                UpdateInventory(selectedSlot);
             }
         }
         else
         {
-            selectedSlot.inventory.UpdateInventory();
+            UpdateInventory(selectedSlot);
         }
     }
 
@@ -111,8 +176,8 @@ public class InventoryManager : MonoBehaviour
     {
         targetSlot.inventory.ChangeSlot(selectedSlot, targetSlot);
         selectedSlot.inventory.ChangeSlot(targetSlot, selectedSlot);
-        selectedSlot.inventory.UpdateInventory();
-        targetSlot.inventory.UpdateInventory();
+        UpdateInventory(selectedSlot);
+        UpdateInventory(targetSlot);
     }
 
     public void QuickEquip(Slot selectedSlot)

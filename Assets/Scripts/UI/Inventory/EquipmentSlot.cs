@@ -29,7 +29,10 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler
                 {
                     InventoryManager.instance.onItemUnequipCallback.Invoke(item);
                 }
-                InventoryManager.instance.onItemEquipCallback.Invoke(slot.item);
+                if (InventoryManager.instance.onItemEquipCallback != null)
+                {
+                    InventoryManager.instance.onItemEquipCallback.Invoke(slot.item);
+                }
             }
             else if (slot.item == null)
             {

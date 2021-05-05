@@ -84,8 +84,15 @@ public class Enemy : MonoBehaviour, ILivingEntity
 
         int value = Mathf.RoundToInt(_value);
 
-        if (damageType == DamageType.miss) FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
-        else FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
+        if (damageType == DamageType.miss)
+        {
+            FloatingDamageManager.instance.FloatingDamage(gameObject, "Miss", transform.position, damageType);
+            StartCoroutine(flash.Execute());
+        }
+        else
+        {
+            FloatingDamageManager.instance.FloatingDamage(gameObject, value.ToString(), transform.position, damageType);
+        }
 
         if (damageType == DamageType.normal || damageType == DamageType.critical)
         {

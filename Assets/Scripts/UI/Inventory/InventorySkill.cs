@@ -13,6 +13,39 @@ public class InventorySkill : Inventory
             skills.Add(null);
     }
 
+    public void SaveInventory()
+    {
+        InventorySkillData inventoryData = new InventorySkillData();
+
+        for (int i = 0; i < skills.Count; i++)
+        {
+            inventoryData.skills.Add(new SkillSaveData(skills[i]));
+        }
+
+        JsonIO.SaveToJson(inventoryData, SaveDataManager.saveFile[saveFileName]);
+    }
+
+    public void LoadInventory()
+    {
+        InventorySkillData inventoryData = JsonIO.LoadFromJson<InventorySkillData>(SaveDataManager.saveFile[saveFileName]);
+
+        if (inventoryData == null) return;
+
+        for (int i = 0; i < inventoryData.skills.Count; i++)
+        {
+            if (inventoryData.skills[i].name == "")
+            {
+                skills[i] = null;
+            }
+            else
+            {
+                skills[i] = inventoryData.skills[i].DeepCopy();
+            }
+        }
+
+        UpdateInventory();
+    }
+
     public void AddSkill(Skill newSkill)
     {
         int index = FindSlot(null);
@@ -42,6 +75,9 @@ public class InventorySkill : Inventory
             slots[i].skill = skills[i];
         }
 
-        InventoryManager.instance.onSlotChangedCallback.Invoke();
+        if (InventoryManager.instance.onSlotChangedCallback != null)
+        {
+            InventoryManager.instance.onSlotChangedCallback.Invoke();
+        }
     }
 }

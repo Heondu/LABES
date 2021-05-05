@@ -71,6 +71,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         UpdateSlot();
     }
 
+    private void OnDisable()
+    {
+        OnNotify(false);
+    }
+
     private void UpdateSlot()
     {
         if (item != null)

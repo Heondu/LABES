@@ -24,7 +24,7 @@ Shader "Sprites/FlashWhite"
             {
                 SetTexture[_MainTex]
                 {
-                    combine primary, texture + primary
+                    combine primary, texture * primary
                 }
             }
         }

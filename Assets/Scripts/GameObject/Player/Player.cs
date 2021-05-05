@@ -92,12 +92,12 @@ public class Player : MonoBehaviour, ILivingEntity
     [ContextMenu("Save Status")]
     public void SaveStatus()
     {
-        JsonIO.SaveToJson(status, "PlayerStatus");
+        JsonIO.SaveToJson(status, SaveDataManager.saveFile[SaveFile.PlayerStatus]);
     }
 
     [ContextMenu("Load Status")]
     public void LoadStatus()
     {
-        status = JsonIO.LoadFromJson<PlayerStatus>("PlayerStatus");
+        status = JsonIO.LoadFromJson<PlayerStatus>(SaveDataManager.saveFile[SaveFile.PlayerStatus]);
     }
 }

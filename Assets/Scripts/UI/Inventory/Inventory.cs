@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     protected Notification notification;
     public UnityEvent<bool> onDisable = new UnityEvent<bool>();
+    [SerializeField]
+    protected SaveFile saveFileName;
 
     private void OnEnable()
     {

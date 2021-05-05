@@ -13,6 +13,39 @@ public class InventoryItem : Inventory
             items.Add(null);
     }
 
+    public void SaveInventory()
+    {
+        InventoryItemData inventoryData = new InventoryItemData();
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            inventoryData.items.Add(new ItemSaveData(items[i]));
+        }
+
+        JsonIO.SaveToJson(inventoryData, SaveDataManager.saveFile[saveFileName]);
+    }
+
+    public void LoadInventory()
+    {
+        InventoryItemData inventoryData = JsonIO.LoadFromJson<InventoryItemData>(SaveDataManager.saveFile[saveFileName]);
+
+        if (inventoryData == null) return;
+
+        for (int i = 0; i < inventoryData.items.Count; i++)
+        {
+            if (inventoryData.items[i].name == "")
+            {
+                items[i] = null;
+            }
+            else
+            {
+                items[i] = inventoryData.items[i].DeepCopy();
+            }
+        }
+
+        UpdateInventory();
+    }
+
     public void AddItem(Item newItem)
     {
         int index = FindSlot(null);
@@ -49,6 +82,9 @@ public class InventoryItem : Inventory
             slots[i].item = items[i];
         }
 
-        InventoryManager.instance.onSlotChangedCallback.Invoke();
+        if (InventoryManager.instance.onSlotChangedCallback != null)
+        {
+            InventoryManager.instance.onSlotChangedCallback.Invoke();
+        }
     }
 }
