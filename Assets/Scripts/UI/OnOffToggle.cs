@@ -8,17 +8,42 @@ public class OnOffToggle : MonoBehaviour, IPointerClickHandler
     private GameObject onObject;
     [SerializeField]
     private GameObject offObject;
-    public bool isOn = false;
-    [SerializeField]
-    private UnityEvent<bool> onValueChanged;
+    private bool isOn;
+    public bool IsOn
+    {
+        get
+        {
+            return isOn;
+        }
+
+        set
+        {
+            isOn = value;
+            onValueChanged.Invoke(value);
+        }
+    }
+    public UnityEvent<bool> onValueChanged;
+
+    private void Awake()
+    {
+        onValueChanged.AddListener(ObjectSetActive);
+    }
+
+    private void Start()
+    {
+        ObjectSetActive(isOn);
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         isOn = !isOn;
 
-        onObject.SetActive(isOn);
-        offObject.SetActive(!isOn);
-
         onValueChanged.Invoke(isOn);
+    }
+
+    private void ObjectSetActive(bool value)
+    {
+        onObject.SetActive(value);
+        offObject.SetActive(!value);
     }
 }

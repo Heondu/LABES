@@ -130,9 +130,17 @@ public class DataManager : MonoBehaviour
             str = str.Substring(0, str.Length - 1);
             percent = "%";
         }
-        for (int i = 0; i < localization_KOR.Count; i++)
+
+        if (SettingsManager.GetLanguage() == Language.korean)
         {
-            if (localization_KOR[i]["name"].ToString() == str) return localization_KOR[i]["localization"].ToString() + percent;
+            for (int i = 0; i < localization_KOR.Count; i++)
+            {
+                if (localization_KOR[i]["name"].ToString() == str) return localization_KOR[i]["localization"].ToString() + percent;
+            }
+        }
+        else
+        {
+            return str;
         }
         return "";
     }
