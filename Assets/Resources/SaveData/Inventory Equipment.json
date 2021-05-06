@@ -1,36 +1,36 @@
 {
     "items": [
         {
-            "name": "glv01",
+            "name": "glv02",
             "spawnable": 1,
             "useType": "equipment",
             "type": "gloves",
             "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/glv01",
+            "inventoryImage": "icons/equip/glv02",
             "status": "accuracy",
-            "rarity": 1,
-            "statMin": 2,
-            "statMax": 3,
-            "cost": 400,
-            "stat": 2,
+            "rarity": 2,
+            "statMin": 5,
+            "statMax": 6,
+            "cost": 800,
+            "stat": 5,
             "rarityType": "Normal",
             "nameAdd": [
-                "int01",
-                "end01",
-                "int01"
+                "lreg01",
+                "ddam01",
+                "fdam01"
             ],
             "statusAdd": [
-                "intelligence",
-                "endurance",
-                "intelligence"
+                "lightResist",
+                "darkDamage",
+                "fireDamage"
             ],
             "statAdd": [
-                4,
-                4,
-                3
+                5,
+                6,
+                7
             ],
             "quality": 0,
-            "isNew": true,
+            "isNew": false,
             "skill": {
                 "skill": "",
                 "name": "",
@@ -101,36 +101,24 @@
             }
         },
         {
-            "name": "glv02",
-            "spawnable": 1,
-            "useType": "equipment",
-            "type": "gloves",
-            "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/glv02",
-            "status": "accuracy",
-            "rarity": 2,
-            "statMin": 5,
-            "statMax": 6,
-            "cost": 800,
-            "stat": 5,
-            "rarityType": "Normal",
-            "nameAdd": [
-                "ddam01",
-                "creg01",
-                "ddam01"
-            ],
-            "statusAdd": [
-                "darkDamage",
-                "coldResist",
-                "darkDamage"
-            ],
-            "statAdd": [
-                7,
-                7,
-                7
-            ],
+            "name": "",
+            "spawnable": 0,
+            "useType": "",
+            "type": "",
+            "itemImage": "",
+            "inventoryImage": "",
+            "status": "",
+            "rarity": 0,
+            "statMin": 0,
+            "statMax": 0,
+            "cost": 0,
+            "stat": 0,
+            "rarityType": "",
+            "nameAdd": [],
+            "statusAdd": [],
+            "statAdd": [],
             "quality": 0,
-            "isNew": false,
+            "isNew": true,
             "skill": {
                 "skill": "",
                 "name": "",
@@ -153,7 +141,7 @@
                 "guide": 0.0,
                 "penetration": 0,
                 "quality": 0,
-                "isNew": true
+                "isNew": false
             }
         },
         {

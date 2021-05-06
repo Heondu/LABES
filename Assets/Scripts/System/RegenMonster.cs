@@ -43,8 +43,8 @@ public class RegenMonster : MonoBehaviour
                 if (index >= regenArea.maxRegenNum) continue;
 
                 Bounds enemyBounds = enemys[index].GetComponent<CapsuleCollider2D>().bounds;
-                Vector3 newPos = regenArea.position.position + new Vector3(enemyBounds.size.x * x, enemyBounds.size.y * y);
-                enemys[index].transform.position = newPos;
+                Vector3 newPos = regenArea.position.position + new Vector3(enemyBounds.size.x * x, enemyBounds.size.y * y, 0);
+                enemys[index].GetComponent<EnemyController>().SetPos(newPos);
             }
         }
         GetComponent<EnemySwarmController>().Init();

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK }
+public enum EnemyState { STATE_NULL = 0, STATE_PATROL, STATE_CHASE, STATE_ATTACK, STATE_COMEBACK }
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private const float FIND_DISTANCE = 8f;
     private const float CAHSE_DISTANCE = 13f;
     private const float ATTACK_DISTANCE = 10f;
+    private const float COMEBACK_DISTANCE = 5f;
     private const float PATROL_TIME = 1f;
     private Vector3[] patrolDir = { Vector3.right, Vector3.zero, Vector3.down, Vector3.zero,
                                     Vector3.left, Vector3.zero, Vector3.up, Vector3.zero };
@@ -22,12 +23,15 @@ public class EnemyController : MonoBehaviour
 
     private PathFinder pathFinder;
     private Vector3 moveDir = Vector3.zero;
+    private Vector3 originPos;
 
     private void Awake()
     {
         target = FindObjectOfType<Player>().gameObject;
 
         pathFinder = GetComponent<PathFinder>();
+
+        originPos = transform.position;
 
         RandSort();
     }
@@ -43,24 +47,43 @@ public class EnemyController : MonoBehaviour
 
         if (state == EnemyState.STATE_PATROL)
         {
-            if (Distance() <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
-            if (Distance() <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance(originPos) > COMEBACK_DISTANCE) SetState(EnemyState.STATE_COMEBACK);
+            if (Distance(target.transform.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_CHASE)
         {
-            if (Distance() > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance() <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+            if (Distance(target.transform.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
+            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
         }
         if (state == EnemyState.STATE_ATTACK)
         {
-            if (Distance() > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
-            if (Distance() > ATTACK_DISTANCE || pathFinder.IsEmpty(target) == false) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.transform.position) > CAHSE_DISTANCE && isSwarmAttack == false) SetState(EnemyState.STATE_PATROL);
+            if (Distance(target.transform.position) > ATTACK_DISTANCE || pathFinder.IsEmpty(target) == false) SetState(EnemyState.STATE_CHASE);
         }
+        if (state == EnemyState.STATE_COMEBACK)
+        {
+            Debug.Log($"{Distance(originPos)}, {transform.position}, {originPos}");
+            if (Distance(originPos) <= COMEBACK_DISTANCE) SetState(EnemyState.STATE_PATROL);
+            if (Distance(target.transform.position) <= FIND_DISTANCE || isSwarmAttack == true) SetState(EnemyState.STATE_CHASE);
+            if (Distance(target.transform.position) <= ATTACK_DISTANCE && pathFinder.IsEmpty(target) == true) SetState(EnemyState.STATE_ATTACK);
+        }
+    }
+
+    public void SetPos(Vector3 pos)
+    {
+        transform.position = pos;
+        originPos = pos;
     }
 
     public Vector3 GetAxis()
     {
         if (isStop) return Vector3.zero;
+        if (state == EnemyState.STATE_COMEBACK)
+        {
+            moveDir = (originPos - transform.position).normalized;
+            return moveDir;
+        }
         if (state == EnemyState.STATE_PATROL || state == EnemyState.STATE_ATTACK)
         {
             if (timer.IsTimeOut(PATROL_TIME))
@@ -87,9 +110,9 @@ public class EnemyController : MonoBehaviour
         return Vector3.zero;
     }
 
-    public float Distance()
+    public float Distance(Vector3 targetPos)
     {
-        return Vector3.Distance(transform.position, target.transform.position);
+        return Mathf.Abs(Vector2.Distance(transform.position, targetPos));
     }
 
     private void RandSort()

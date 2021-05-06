@@ -43,10 +43,10 @@ public class InventoryManager : MonoBehaviour
     public bool itemLoad = false;
     public bool skillSave = false;
     public bool skillLoad = false;
+    public bool resourceSave = false;
+    public bool resourceLoad = false;
 
-    private int gold = 0;
-    private int ore = 0;
-    private int leaf = 0;
+    private Resource resource = new Resource();
 
     private void Awake()
     {
@@ -59,6 +59,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         LoadInventory();
+        LoadResource();
     }
 
     private void SaveInventory()
@@ -94,6 +95,22 @@ public class InventoryManager : MonoBehaviour
         {
             inventorySkill.LoadInventory();
             skillSlot.LoadInventory();
+        }
+    }
+
+    private void SaveResource()
+    {
+        if (resourceSave)
+        {
+            JsonIO.SaveToJson(resource, SaveDataManager.saveFile[SaveFile.PlayerResources]);
+        }
+    }
+
+    private void LoadResource()
+    {
+        if (resourceLoad)
+        {
+            resource = JsonIO.LoadFromJson<Resource>(SaveDataManager.saveFile[SaveFile.PlayerResources]);
         }
     }
 
@@ -293,40 +310,47 @@ public class InventoryManager : MonoBehaviour
 
     public void AddGold(int value)
     {
-        gold += value;
+        resource.gold += value;
+        SaveResource();
+        
     }
     public void SubGold(int value)
     {
-        gold -= value;
+        resource.gold -= value;
+        SaveResource();
     }
     public int GetGold()
     {
-        return gold;
+        return resource.gold;
     }
 
     public void AddOre(int value)
     {
-        ore += value;
+        resource.ore += value;
+        SaveResource();
     }
     public void SubOre(int value)
     {
-        ore -= value;
+        resource.ore -= value;
+        SaveResource();
     }
     public int GetOre()
     {
-        return ore;
+        return resource.ore;
     }
 
     public void AddLeaf(int value)
     {
-        leaf += value;
+        resource.leaf += value;
+        SaveResource();
     }
     public void SubLeaf(int value)
     {
-        leaf -= value;
+        resource.leaf -= value;
+        SaveResource();
     }
     public int GetLeaf()
     {
-        return leaf;
+        return resource.leaf;
     }
 }

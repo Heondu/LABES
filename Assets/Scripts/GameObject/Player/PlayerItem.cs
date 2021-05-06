@@ -11,6 +11,26 @@ public class PlayerItem : MonoBehaviour
         InventoryManager.instance.onItemUnequipCallback += Unequip;
     }
 
+    private void Update()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, player.GetStatus("itemRange").Value);
+
+        foreach (Collider2D collider in colliders)
+        {
+            IItem item = collider.GetComponent<IItem>();
+
+            if (item != null)
+            {
+                item.MoveToPlayer(transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, player.GetStatus("itemRange").Value);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IItem item = collision.GetComponent<IItem>();

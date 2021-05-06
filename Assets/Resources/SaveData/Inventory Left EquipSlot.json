@@ -147,19 +147,19 @@
             "stat": 4,
             "rarityType": "Normal",
             "nameAdd": [
-                "freg01",
-                "dreg01",
-                "ldam01"
+                "fdam01",
+                "ddam01",
+                "freg01"
             ],
             "statusAdd": [
-                "fireResist",
-                "darkResist",
-                "lightDamage"
+                "fireDamage",
+                "darkDamage",
+                "fireResist"
             ],
             "statAdd": [
-                5,
                 6,
-                7
+                6,
+                5
             ],
             "quality": 0,
             "isNew": false,

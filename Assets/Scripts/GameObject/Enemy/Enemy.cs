@@ -45,6 +45,10 @@ public class Enemy : MonoBehaviour, ILivingEntity
             case EnemyState.STATE_ATTACK:
                 Attack();
                 break;
+            case EnemyState.STATE_COMEBACK:
+                movement.Execute(enemyController.GetAxis(), moveSpeed);
+                animationController.Movement(enemyController.GetAxis());
+                break;
         }
     }
 

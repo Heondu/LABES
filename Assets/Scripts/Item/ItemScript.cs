@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ItemScript : MonoBehaviour, IItem
+public class ItemScript : DropItem, IItem
 {
     private Item item;
     [SerializeField]
@@ -11,16 +11,10 @@ public class ItemScript : MonoBehaviour, IItem
     private SpriteRenderer outlineRenderer;
     [SerializeField]
     private Color[] colors;
-    private new Rigidbody2D rigidbody;
-
-    private void Awake()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-    }
 
     private void Start()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     public void Init(Item item)
@@ -40,15 +34,6 @@ public class ItemScript : MonoBehaviour, IItem
         SetOutlineColor();
 
         Diffusion(item.rarity);
-    }
-
-    public void Diffusion(int weight)
-    {
-        Vector2 dir = Random.insideUnitCircle;
-
-        rigidbody.mass = weight;
-
-        rigidbody.AddForce(dir * 10, ForceMode2D.Impulse);
     }
 
     public void Use()

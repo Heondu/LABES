@@ -1,33 +1,33 @@
 {
     "items": [
         {
-            "name": "swd01",
+            "name": "stf04",
             "spawnable": 1,
             "useType": "weapon",
-            "type": "sword",
+            "type": "staff",
             "itemImage": "Sprites/DropIcon/dropitem_0",
-            "inventoryImage": "icons/equip/swd01",
+            "inventoryImage": "icons/equip/stf04",
             "status": "damage",
-            "rarity": 1,
-            "statMin": 8,
-            "statMax": 11,
-            "cost": 19650,
-            "stat": 10,
-            "rarityType": "Rare",
+            "rarity": 3,
+            "statMin": 60,
+            "statMax": 70,
+            "cost": 3900,
+            "stat": 66,
+            "rarityType": "Normal",
             "nameAdd": [
-                "int05",
-                "int05",
-                "end05"
+                "str02",
+                "str02",
+                "end02"
             ],
             "statusAdd": [
-                "intelligence",
-                "intelligence",
+                "strength",
+                "strength",
                 "endurance"
             ],
             "statAdd": [
-                43,
-                32,
-                31
+                8,
+                9,
+                8
             ],
             "quality": 0,
             "isNew": false,
@@ -112,22 +112,22 @@
             "statMin": 8,
             "statMax": 11,
             "cost": 450,
-            "stat": 9,
+            "stat": 10,
             "rarityType": "Normal",
             "nameAdd": [
-                "end01",
+                "agi01",
                 "int01",
-                "str01"
+                "end01"
             ],
             "statusAdd": [
-                "endurance",
+                "agility",
                 "intelligence",
-                "strength"
+                "endurance"
             ],
             "statAdd": [
                 4,
                 4,
-                4
+                3
             ],
             "quality": 0,
             "isNew": false,
@@ -157,33 +157,33 @@
             }
         },
         {
-            "name": "bts02",
+            "name": "bts01",
             "spawnable": 1,
             "useType": "equipment",
             "type": "shoes",
             "itemImage": "Sprites/DropIcon/dropitem_1",
-            "inventoryImage": "icons/equip/bts02",
+            "inventoryImage": "icons/equip/bts01",
             "status": "avoidance",
-            "rarity": 2,
-            "statMin": 5,
-            "statMax": 6,
-            "cost": 800,
-            "stat": 5,
+            "rarity": 1,
+            "statMin": 2,
+            "statMax": 3,
+            "cost": 400,
+            "stat": 2,
             "rarityType": "Normal",
             "nameAdd": [
-                "creg01",
-                "freg01",
-                "ldam01"
+                "str01",
+                "str01",
+                "str01"
             ],
             "statusAdd": [
-                "coldResist",
-                "fireResist",
-                "lightDamage"
+                "strength",
+                "strength",
+                "strength"
             ],
             "statAdd": [
-                6,
-                5,
-                5
+                4,
+                4,
+                4
             ],
             "quality": 0,
             "isNew": false,
