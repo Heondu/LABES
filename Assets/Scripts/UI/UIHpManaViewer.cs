@@ -22,8 +22,10 @@ public class UIHpManaViewer : MonoBehaviour
     private void Update()
     {
         imageHP.fillAmount = (float)playerStatus.HP / playerStatus.maxHP;
-        textHP.text = $"{playerStatus.HP}/{playerStatus.maxHP}";
+        if (textHP != null)
+            textHP.text = $"{playerStatus.HP}/{playerStatus.maxHP}";
         imageMana.fillAmount = (float)playerStatus.mana / playerStatus.maxMana;
-        textMana.text = $"{playerStatus.mana}/{playerStatus.maxMana}";
+        if (textMana != null)
+            textMana.text = $"{playerStatus.mana}/{playerStatus.maxMana}";
     }
 }

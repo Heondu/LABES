@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour, ILivingEntity
         if (status.HP == 0)
         {
             FindObjectOfType<Player>().status.exp += (int)monlvl["monexp"];
-            ItemGenerator.instance.DropItem((int)monlvl["raritymin"], (int)monlvl["raritymax"], monster["class"].ToString(), transform.position);
+            ItemGenerator.instance.DropItem(monlvl, monster["class"].ToString(), transform.position);
             Destroy(gameObject);
         }
     }

@@ -13,6 +13,8 @@ public class ItemGenerator : MonoBehaviour
     private string rarityType = "Normal";
     [SerializeField]
     private GameObject itemPrefab;
+    [SerializeField]
+    private GameObject goldPrefab;
 
     private void Awake()
     {
@@ -20,28 +22,81 @@ public class ItemGenerator : MonoBehaviour
         else instance = this;
     }
 
-    public void DropItem(int rarityMin, int rarityMax, string type, Vector3 pos)
+    public void DropItem(Dictionary<string, object> monlvl, string classType, Vector3 pos)
     {
-        GameObject clone;
-        int num = Random.Range(0, System.Enum.GetNames(typeof(ItemType)).Length);
-        if (num == (int)ItemType.equipment)
+        Dictionary<string, object> droptable = DataManager.droptable.FindDic("class", classType);
+        List<int> probList = new List<int>();
+
+        for (int i = 1; i <= 6; i++)
         {
-            Filtering(rarityMin, rarityMax, DataManager.itemEquipmentDB);
-            RandomRarity(type);
-            ItemInit();
-            Additional();
-            clone = Instantiate(itemPrefab, pos, Quaternion.identity);
-            clone.GetComponent<ItemScript>().Init(item);
+            if (droptable["prob" + i].ToString() == "") continue;
+
+            probList.Add((int)droptable["prob" + i]);
         }
-        else if (num == (int)ItemType.consume)
+
+        int quantity = Random.Range((int)droptable["minquantity"], (int)droptable["maxquantity"] + 1);
+        for (int i = 0; i < quantity; i++)
         {
-            Filtering(rarityMin, rarityMax, DataManager.itemConsumeDB);
-            if (itemList.Count == 0) return;
-            item = itemList[Random.Range(0, itemList.Count)];
-            clone = Resources.Load<GameObject>("Prefabs/Items/" + item.name);
-            clone = Instantiate(clone, pos, Quaternion.identity);
-            clone.GetComponent<ItemScript>().Init(item);
+            int sumOfProb = 0;
+            for (int j = 0; j < probList.Count; j++)
+            {
+                sumOfProb += probList[j];
+            }
+
+            int rand = Random.Range(0, sumOfProb);
+            int sum = 0;
+            int index = 0;
+            for (int j = 0; j < probList.Count; j++)
+            {
+                sum += probList[j];
+                if (rand < sum)
+                {
+                    index = j + 1;
+                    probList[j] = 0;
+                    break;
+                }
+            }
+
+            switch (droptable["item" + index].ToString())
+            {
+                case "equip": DropEquipItem((int)monlvl["raritymin"], (int)monlvl["raritymax"], classType, pos); break;
+                case "monster": break;
+                case "gold": DropGold((int)monlvl["goldmin"], (int)monlvl["goldmax"], 1, pos); break;
+                case "gold/2": DropGold((int)monlvl["goldmin"], (int)monlvl["goldmax"], 2, pos); break;
+                case "gold/10": DropGold((int)monlvl["goldmin"], (int)monlvl["goldmax"], 10, pos); break;
+                case "consume": DropConsumeItem((int)monlvl["raritymin"], (int)monlvl["raritymax"], pos); break;
+            }
         }
+    }
+
+    private void DropEquipItem(int rarityMin, int rarityMax, string classType, Vector3 pos)
+    {
+        Filtering(rarityMin, rarityMax, DataManager.itemEquipmentDB);
+        RandomRarity(classType);
+        ItemInit();
+        Additional();
+        GameObject clone = Instantiate(itemPrefab, pos, Quaternion.identity);
+        clone.GetComponent<ItemScript>().Init(item);
+    }
+
+    private void DropConsumeItem(int rarityMin, int rarityMax, Vector3 pos)
+    {
+        Filtering(rarityMin, rarityMax, DataManager.itemConsumeDB);
+        if (itemList.Count == 0) return;
+        item = itemList[Random.Range(0, itemList.Count)];
+        GameObject clone = Resources.Load<GameObject>("Prefabs/Items/" + item.name);
+        clone = Instantiate(clone, pos, Quaternion.identity);
+        clone.GetComponent<ItemScript>().Init(item);
+    }
+
+    private void DropGold(int goldmin, int goldmax, int divisionNum , Vector3 pos)
+    {
+        int gold = Random.Range(goldmin, goldmax + 1);
+
+        gold = Mathf.Max(1, gold / divisionNum);
+
+        GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+        clone.GetComponent<Gold>().SetGold(gold);
     }
 
     private void Filtering(int rarityMin, int rarityMax, Dictionary<string, Item> itemDB)
@@ -58,9 +113,9 @@ public class ItemGenerator : MonoBehaviour
         }
     }
 
-    private void RandomRarity(string type)
+    private void RandomRarity(string classType)
     {
-        rarity = DataManager.rarity.FindDic("Function", type);
+        rarity = DataManager.rarity.FindDic("Function", classType);
         int[] sort = { (int)rarity["Legendary"], (int)rarity["Unique"], (int)rarity["Rare"], (int)rarity["Magic"], (int)rarity["HiQuality"], (int)rarity["Normal"] };
         string[] types = { "Legendary", "Unique", "Rare", "Magic", "HiQuality", "Normal" };
         for (int i = 0; i < sort.Length - 1; i++) {

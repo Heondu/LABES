@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ItemScript : MonoBehaviour
+public class ItemScript : MonoBehaviour, IItem
 {
     private Item item;
     [SerializeField]
@@ -34,9 +34,10 @@ public class ItemScript : MonoBehaviour
         SetOutlineColor();
     }
 
-    public Item GetItem()
+    public void Use()
     {
-        return item;
+        InventoryManager.instance.AddItem(item);
+        Destroy(gameObject);
     }
 
     private void SetOutlineColor()

@@ -11,18 +11,12 @@ public class PlayerItem : MonoBehaviour
         InventoryManager.instance.onItemUnequipCallback += Unequip;
     }
 
-    public void PickUp(Item item)
-    {
-        InventoryManager.instance.AddItem(item);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ItemScript item = collision.GetComponent<ItemScript>();
+        IItem item = collision.GetComponent<IItem>();
         if (item != null)
         {
-            PickUp(item.GetItem());
-            Destroy(collision.gameObject);
+            item.Use();
         }
     }
 

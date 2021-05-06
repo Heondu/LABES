@@ -16,6 +16,7 @@ public class InventorySkillData
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
+
     public InventoryItem inventoryWeapon;
     public InventoryItem inventoryEquipment;
     public InventorySkill inventorySkill;
@@ -24,20 +25,28 @@ public class InventoryManager : MonoBehaviour
     public InventoryItem equipSlotR;
     public InventorySkill skillSlot;
     public InventoryItem consumeSlot;
+
     public delegate void OnSlotChanged();
     public OnSlotChanged onSlotChangedCallback;
     public delegate void OnItemEquipChanged(Item item);
     public OnItemEquipChanged onItemEquipCallback;
     public delegate void OnItemUnequipChanged(Item item);
     public OnItemUnequipChanged onItemUnequipCallback;
+
     private SlotDrag draggingSlot;
     [SerializeField]
     private GameObject draggingObject;
+
     public Notification notification;
+
     public bool itemSave = false;
     public bool itemLoad = false;
     public bool skillSave = false;
     public bool skillLoad = false;
+
+    private int gold = 0;
+    private int ore = 0;
+    private int leaf = 0;
 
     private void Awake()
     {
@@ -280,5 +289,44 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void AddGold(int value)
+    {
+        gold += value;
+    }
+    public void SubGold(int value)
+    {
+        gold -= value;
+    }
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void AddOre(int value)
+    {
+        ore += value;
+    }
+    public void SubOre(int value)
+    {
+        ore -= value;
+    }
+    public int GetOre()
+    {
+        return ore;
+    }
+
+    public void AddLeaf(int value)
+    {
+        leaf += value;
+    }
+    public void SubLeaf(int value)
+    {
+        leaf -= value;
+    }
+    public int GetLeaf()
+    {
+        return leaf;
     }
 }
