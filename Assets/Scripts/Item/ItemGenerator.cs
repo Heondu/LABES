@@ -91,12 +91,32 @@ public class ItemGenerator : MonoBehaviour
 
     private void DropGold(int goldmin, int goldmax, int divisionNum , Vector3 pos)
     {
-        int gold = Random.Range(goldmin, goldmax + 1);
+        int gold = Random.Range(goldmin, goldmax + 1) * 10;
 
-        gold = Mathf.Max(1, gold / divisionNum);
+        gold = Mathf.Max(10, gold / divisionNum);
 
-        GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
-        clone.GetComponent<Gold>().SetGold(gold);
+        int gold1000 = gold / 1000 * 1000;
+        int gold100 = gold % 1000 / 100 * 100;
+        int gold10 = gold % 1000 % 100 / 10 * 10;
+
+        if (gold1000 != 0)
+        {
+            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            clone.GetComponent<Gold>().SetGold(gold1000);
+            clone.GetComponent<Gold>().Diffusion(10);
+        }
+        if (gold100 != 0)
+        {
+            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            clone.GetComponent<Gold>().SetGold(gold100);
+            clone.GetComponent<Gold>().Diffusion(5);
+        }
+        if (gold10 != 0)
+        {
+            GameObject clone = Instantiate(goldPrefab, pos, Quaternion.identity);
+            clone.GetComponent<Gold>().SetGold(gold10);
+            clone.GetComponent<Gold>().Diffusion(1);
+        }
     }
 
     private void Filtering(int rarityMin, int rarityMax, Dictionary<string, Item> itemDB)

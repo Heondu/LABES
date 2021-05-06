@@ -11,6 +11,12 @@ public class ItemScript : MonoBehaviour, IItem
     private SpriteRenderer outlineRenderer;
     [SerializeField]
     private Color[] colors;
+    private new Rigidbody2D rigidbody;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -32,6 +38,17 @@ public class ItemScript : MonoBehaviour, IItem
         else spriteRenderer.sprite = Resources.Load<Sprite>(item.itemImage);
 
         SetOutlineColor();
+
+        Diffusion(item.rarity);
+    }
+
+    public void Diffusion(int weight)
+    {
+        Vector2 dir = Random.insideUnitCircle;
+
+        rigidbody.mass = weight;
+
+        rigidbody.AddForce(dir * 10, ForceMode2D.Impulse);
     }
 
     public void Use()

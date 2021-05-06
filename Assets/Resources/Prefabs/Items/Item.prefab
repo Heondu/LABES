@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 6240488169079696624}
   - component: {fileID: 6575017830136376905}
   - component: {fileID: -4609772501654948938}
+  - component: {fileID: -3143231768203552560}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -246,3 +247,24 @@ MonoBehaviour:
   - {r: 0.7647059, g: 0.5058824, b: 0.29803923, a: 1}
   - {r: 0.7372549, g: 0.3137255, b: 0.28627452, a: 1}
   - {r: 0.54509807, g: 0.2784314, b: 0.7254902, a: 1}
+--- !u!50 &-3143231768203552560
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240488169079696397}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
