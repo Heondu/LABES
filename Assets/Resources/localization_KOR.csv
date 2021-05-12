@@ -33,8 +33,8 @@ critResist,치명타 저항
 critDamage,치명타 배율
 experience,경험치 배율
 itemRange,획득 반경
-,
-,
+HP,체력
+mana,마나
 ,
 ,
 ######,스킬######

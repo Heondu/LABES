@@ -19,7 +19,7 @@ TagManager:
   - UI
   - Minimap
   - FloatingDamage
-  - 
+  - Object
   - 
   - 
   - 
@@ -49,4 +49,13 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Weather
+    uniqueID: 3057873083
+    locked: 0
+  - name: Light
+    uniqueID: 3554389751
+    locked: 0
+  - name: UI
+    uniqueID: 981692317
     locked: 0

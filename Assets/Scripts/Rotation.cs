@@ -2,13 +2,13 @@
 
 public class Rotation : MonoBehaviour
 {
-    public static void Rotate(Transform target, Vector3 dir) //자기를 중심으로 회전
+    public static void Rotate(Transform target, Vector3 dir)
     {
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         target.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 
-    public static void Rotate(Transform target, Vector3 dir, Vector3 center) //센터를 중심으로 회전
+    public static void Rotate(Transform target, Vector3 dir, Vector3 center)
     {
         Rotate(target, dir);
         float angle = Mathf.Atan2(dir.y, dir.x);
@@ -23,5 +23,10 @@ public class Rotation : MonoBehaviour
         Vector2 dir = (to - from).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         return angle - 90;
+    }
+
+    public static float GetAngle(Vector2 dir)
+    {
+        return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
     }
 }

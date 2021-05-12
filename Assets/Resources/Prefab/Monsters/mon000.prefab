@@ -800,7 +800,8 @@ GameObject:
   - component: {fileID: -5299227836423732740}
   - component: {fileID: 7836975391860590087}
   - component: {fileID: -7356897743009209210}
-  m_Layer: 0
+  - component: {fileID: -4204144132832756388}
+  m_Layer: 8
   m_Name: mon000
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -892,6 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cac72a2aa7b8c43a4729f0246fb770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   status:
     HP: 0
     maxHP: 0
@@ -941,6 +943,7 @@ MonoBehaviour:
       BaseValue: 0
     reduceCool:
       BaseValue: 0
+  moveSpeed: 3
 --- !u!114 &-7711282774276865642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,7 +969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb7e5a52f898224db0e02debbb0891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
 --- !u!114 &-5299227836423732740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1007,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteMat: {fileID: 2100000, guid: 870e4222ddfe8f64fa4b25823d4219d7, type: 2}
+--- !u!114 &-4204144132832756388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890426043802458543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8e602d3d4cd454ba1521b848519184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &890426043811947290
 GameObject:
   m_ObjectHideFlags: 0
