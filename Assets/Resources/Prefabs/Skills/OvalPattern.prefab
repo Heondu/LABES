@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &5647511513236763611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +207,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950188853608
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +265,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -368,6 +367,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4712029631866550926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,8 +414,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950339476744
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +471,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -563,6 +561,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &1811673496926900303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,8 +608,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950407528325
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +665,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -758,6 +755,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &3598348591896342046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,8 +802,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950472243362
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +859,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -953,6 +949,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4132026008850193501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,8 +996,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539950736212774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1078,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!1 &4219539950756880121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1230,6 +1226,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &1292704174192601667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,8 +1273,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951011565649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1330,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1425,6 +1420,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &9039430875708102918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,8 +1467,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951038257030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1525,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1633,6 +1627,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &377301691197035959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,8 +1674,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951088141651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,7 +1731,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1828,6 +1821,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &5634600057385629182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1874,8 +1868,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951154778889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1926,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2036,6 +2028,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &3818179614128027891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2082,8 +2075,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951178759297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2231,6 +2222,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4484549335824890326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,8 +2269,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951524094328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,7 +2326,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2426,6 +2416,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &37936793340885645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2472,8 +2463,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951533746352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2520,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2621,6 +2610,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &6340415126285458456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,8 +2657,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951605574324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,7 +2714,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2816,6 +2804,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &3679454875911564556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,8 +2851,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951626947273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2908,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3011,6 +2998,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &4539452675868908170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,8 +3045,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951701930927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,7 +3102,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3206,6 +3192,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7465990542948178266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3252,8 +3239,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951742193807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3311,7 +3296,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3401,6 +3386,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7904495975569798430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,8 +3433,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539951961570915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,7 +3490,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3596,6 +3580,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &9081590380251476140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,8 +3627,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539952000329732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3701,7 +3684,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3791,6 +3774,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7638962475760747343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3837,8 +3821,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &4219539952172941222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3896,7 +3878,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3986,6 +3968,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &8422946612969427217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4032,5 +4015,3 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}

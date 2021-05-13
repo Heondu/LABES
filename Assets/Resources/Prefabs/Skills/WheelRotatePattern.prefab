@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &7335782004590770491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,8 +196,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469766741617
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +253,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -333,6 +332,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &3828841045314282002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,8 +392,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469843352030
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +449,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -530,6 +528,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &8199180099434360739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,8 +588,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184469853645010
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +692,7 @@ MonoBehaviour:
   status: 1
   relatedStatus: 11
   attackNum: 1
+  nextSkills: []
 --- !u!114 &-7997130523535061278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +746,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills: []
 --- !u!1 &295184470030956630
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +803,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -885,6 +882,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &1182894142764382029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,8 +942,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470295605462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +999,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1082,6 +1078,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &5325015395177519292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,8 +1138,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470348256612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1195,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1279,6 +1274,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &6630214467660229450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,8 +1334,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184470644187727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1391,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1476,6 +1470,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &8384434734802496194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,8 +1530,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
 --- !u!1 &295184471320130312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1587,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1673,6 +1666,7 @@ MonoBehaviour:
   status: 0
   relatedStatus: 0
   attackNum: 1
+  nextSkills: []
 --- !u!114 &2195010567892563079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,5 +1726,3 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
-  nextSkills:
-  - {fileID: 7043094700990477972, guid: 70136292c5109464a88a82310606f21e, type: 3}
